@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<xs:schema id="StringManipulator" targetNamespace="http://tempuri.org/StringManipulatorFormats.xsd"
+	xmlns:mstns="http://tempuri.org/StringManipulatorFormats.xsd" xmlns="http://tempuri.org/StringManipulatorFormats.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+	xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="StringManipulatorCfg" msdata:IsDataSet="true" msdata:EnforceConstraints="False">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Format" nillable="true">
+					<xs:complexType>
+						<xs:simpleContent msdata:ColumnName="Format_Text" msdata:Ordinal="1">
+							<xs:extension base="xs:string">
+								<xs:attribute name="Name" form="unqualified" type="xs:string" msprop:nullValue="_empty" />
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+<!-- xsd /c StringManipulatorFormats.xsd -->
