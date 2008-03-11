@@ -15,6 +15,8 @@ namespace MultiLineStringFormatter
         public static char[] GetDelimiter(string delimiterString)
         {
             char[] delimiter = null;
+            if (delimiterString == null)
+                delimiterString = ",";
             switch (delimiterString.ToLower())
             {
                 case "tab":

@@ -45,6 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalysisData.cs" />
+    <Compile Include="AnalysisForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisForm.Designer.cs">
+      <DependentUpon>AnalysisForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BulkLinePurge.cs" />
     <Compile Include="ExpandData.cs" />
     <Compile Include="FileTrimmer.cs">
@@ -67,6 +74,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AnalysisForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AnalysisForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FileTrimmer.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FileTrimmer.cs</DependentUpon>
@@ -89,11 +100,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\LineInfo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="StringManipulatorFormats.cfg" />
+    <None Include="StringManipulatorFormats.xsc">
+      <DependentUpon>StringManipulatorFormats.xsd</DependentUpon>
+    </None>
+    <None Include="StringManipulatorFormats.xss">
+      <DependentUpon>StringManipulatorFormats.xsd</DependentUpon>
+    </None>
     <Content Include="App.ico" />
     <Content Include="options.JPG" />
     <Content Include="StringManipulatorFormats.xsd">

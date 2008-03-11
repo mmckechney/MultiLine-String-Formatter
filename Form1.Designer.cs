@@ -37,6 +37,7 @@ namespace MultiLineStringFormatter
             this.btnCancel = new System.Windows.Forms.Button();
             this.ddDelimiter = new System.Windows.Forms.ComboBox();
             this.pnlResults = new System.Windows.Forms.Panel();
+            this.btnAnalysis = new System.Windows.Forms.Button();
             this.btnExpand = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statGeneral = new System.Windows.Forms.ToolStripStatusLabel();
@@ -66,7 +67,7 @@ namespace MultiLineStringFormatter
             this.rtbFormat = new System.Windows.Forms.RichTextBox();
             this.ctxFormats = new System.Windows.Forms.ContextMenu();
             this.label2 = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.bgFormatProcessor = new System.ComponentModel.BackgroundWorker();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.pnlSource = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -148,6 +149,7 @@ namespace MultiLineStringFormatter
             // 
             // pnlResults
             // 
+            this.pnlResults.Controls.Add(this.btnAnalysis);
             this.pnlResults.Controls.Add(this.btnExpand);
             this.pnlResults.Controls.Add(this.statusStrip1);
             this.pnlResults.Controls.Add(this.menuStrip2);
@@ -159,6 +161,19 @@ namespace MultiLineStringFormatter
             this.pnlResults.Name = "pnlResults";
             this.pnlResults.Size = new System.Drawing.Size(923, 261);
             this.pnlResults.TabIndex = 32;
+            // 
+            // btnAnalysis
+            // 
+            this.btnAnalysis.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAnalysis.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnAnalysis.Location = new System.Drawing.Point(761, 6);
+            this.btnAnalysis.Name = "btnAnalysis";
+            this.btnAnalysis.Size = new System.Drawing.Size(72, 19);
+            this.btnAnalysis.TabIndex = 28;
+            this.btnAnalysis.Text = "Analysis";
+            this.btnAnalysis.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnAnalysis, "Process the file specified into code for a string");
+            this.btnAnalysis.Click += new System.EventHandler(this.btnAnalysis_Click);
             // 
             // btnExpand
             // 
@@ -436,13 +451,13 @@ namespace MultiLineStringFormatter
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.label2, "Text added after everything (for instance a method closing)");
             // 
-            // backgroundWorker1
+            // bgFormatProcessor
             // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.WorkerSupportsCancellation = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.bgFormatProcessor.WorkerReportsProgress = true;
+            this.bgFormatProcessor.WorkerSupportsCancellation = true;
+            this.bgFormatProcessor.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.bgFormatProcessor.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            this.bgFormatProcessor.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             // 
             // splitter1
             // 
@@ -524,7 +539,8 @@ namespace MultiLineStringFormatter
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "Text Files (*.txt)|*.txt|SQL Files (*.sql)|*.sql|All Files (*.*)|*.*";
+            this.openFileDialog1.Filter = "Text Files (*.txt)|*.txt|Comma Separated Files (*.csv)|*.csv|SQL Files (*.sql)|*." +
+                "sql|All Files (*.*)|*.*";
             // 
             // toolTip1
             // 
@@ -578,7 +594,7 @@ namespace MultiLineStringFormatter
         private System.Windows.Forms.RichTextBox rtbFormat;
         private System.Windows.Forms.ContextMenu ctxFormats;
         private System.Windows.Forms.Label label2;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker bgFormatProcessor;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Panel pnlSource;
         private System.Windows.Forms.Label label3;
@@ -613,6 +629,7 @@ namespace MultiLineStringFormatter
         private System.Windows.Forms.ToolStripMenuItem fillWithDefaultTextToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox defaultFillTextMenuItem;
         private System.Windows.Forms.Button btnExpand;
+        private System.Windows.Forms.Button btnAnalysis;
 
     }
 }

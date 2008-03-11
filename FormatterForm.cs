@@ -204,13 +204,13 @@ namespace MultiLineStringFormatter
                 (fillWithDefaultTextToolStripMenuItem.Checked ? defaultFillTextMenuItem.TextBox.Text : ""));
 
 
-            this.backgroundWorker1.RunWorkerAsync(dat);
+            this.bgFormatProcessor.RunWorkerAsync(dat);
         }
         private void btnExpand_Click(object sender, EventArgs e)
         {
             string delimiterString = (ddDelimiter.SelectedItem != null) ? ddDelimiter.SelectedItem.ToString() : ddDelimiter.Text;
             ExpandData data = new ExpandData(rtbFormat.Text, rtbStringSource.Lines, delimiterString);
-            this.backgroundWorker1.RunWorkerAsync(data);
+            this.bgFormatProcessor.RunWorkerAsync(data);
 
         }
 
@@ -539,7 +539,7 @@ namespace MultiLineStringFormatter
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.CancelAsync();
+            bgFormatProcessor.CancelAsync();
         }
 
         /// <summary>
@@ -700,6 +700,20 @@ namespace MultiLineStringFormatter
             if (this.CurrentFormat.Length > 0)
                 this.CurrentFormatChanged = true;
         }
+
+        private void btnAnalysis_Click(object sender, EventArgs e)
+        {
+            string delimiterString = (ddDelimiter.SelectedItem != null) ? ddDelimiter.SelectedItem.ToString() : ddDelimiter.Text;
+
+            AnalysisData data = new AnalysisData();
+            data.SourceLines = rtbStringSource.Lines;
+            data.TotalLines = data.SourceLines.Length;
+            data.Delimiter = delimiterString;
+            AnalysisForm frmAnalysis = new AnalysisForm(data);
+            frmAnalysis.Show();
+        }
+
+
 
       
 
