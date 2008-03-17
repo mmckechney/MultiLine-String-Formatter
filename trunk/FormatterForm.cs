@@ -23,6 +23,7 @@ namespace MultiLineStringFormatter
         /// Place holder for the name of the currently inserted saved format (if any)
         /// </summary>
         string _currentFormat = string.Empty;
+        int currentResultsLine = -1;
         private string CurrentFormat
         {
             get
@@ -711,6 +712,34 @@ namespace MultiLineStringFormatter
             data.Delimiter = delimiterString;
             AnalysisForm frmAnalysis = new AnalysisForm(data);
             frmAnalysis.Show();
+        }
+
+        private void rtbStringResults_MouseDown(object sender, MouseEventArgs e)
+        {
+           int index =  rtbStringResults.GetCharIndexFromPosition(new Point(e.X, e.Y));
+           int line = rtbStringResults.GetLineFromCharIndex(index);
+           if (line > 0)
+               currentResultsLine = line - 1;
+           else
+               currentResultsLine = -1;
+            
+        }
+
+        private void FormatterForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.D)
+            {
+                currentResultsLine++;
+                if (rtbStringResults.Lines.Length > currentResultsLine)
+                {
+                    this.rtbStringResults.Select(this.rtbStringResults.GetFirstCharIndexFromLine(currentResultsLine), rtbStringResults.Lines[currentResultsLine].Length);
+                    this.rtbStringResults.Focus();
+
+                    Clipboard.SetText( (rtbStringResults.Lines[currentResultsLine].Length > 0) ? rtbStringResults.Lines[currentResultsLine] : " " );
+                    Point pnt = new Point(this.pnlResults.Location.X + (int)(this.pnlResults.Width *  .25), this.pnlResults.Location.Y + (int)(this.pnlResults.Height * .25));
+                    toolTip1.Show("Copied to Clipboard:\r\n\t"+rtbStringResults.Lines[currentResultsLine] + "\t\r\n", this, pnt, 3000);
+                }
+            }
         }
 
 

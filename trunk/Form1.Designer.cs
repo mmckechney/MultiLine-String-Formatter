@@ -372,6 +372,7 @@ namespace MultiLineStringFormatter
             this.rtbStringResults.TabIndex = 1;
             this.rtbStringResults.Text = "";
             this.toolTip1.SetToolTip(this.rtbStringResults, "Right click to copy to clip board or save as a file");
+            this.rtbStringResults.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rtbStringResults_MouseDown);
             // 
             // ctxCopy
             // 
@@ -557,10 +558,12 @@ namespace MultiLineStringFormatter
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.pnlSource);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormatterForm";
             this.Text = "Multi-Line String Formatter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormatterForm_FormClosing);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormatterForm_KeyUp);
             this.Load += new System.EventHandler(this.FormatterForm_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.pnlResults.ResumeLayout(false);
