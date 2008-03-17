@@ -160,6 +160,7 @@ namespace MultiLineStringFormatter
             this.btnProcess.Enabled = true;
             this.btnCancel.Enabled = false;
             this.btnExpand.Enabled = true;
+            this.currentResultsLine = -1;
 
             this.Cursor = Cursors.Default;
         }
