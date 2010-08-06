@@ -31,39 +31,36 @@ namespace MultiLineStringFormatter
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnalysisForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblMatchingLines = new System.Windows.Forms.Label();
             this.lblDelimiter = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ddIndexes = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblLessIndexes = new System.Windows.Forms.Label();
-            this.lblTotalLines = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.ddIndexes = new System.Windows.Forms.ComboBox();
+            this.lblMoreIndexes = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblTotalLines = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lineInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorLinesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statGeneral = new System.Windows.Forms.ToolStripStatusLabel();
             this.statProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.bgAnalysis = new System.ComponentModel.BackgroundWorker();
-            this.lblMatchingLines = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblMoreIndexes = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actualIndexCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lineInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lineInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorLinesBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lineInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -96,6 +93,24 @@ namespace MultiLineStringFormatter
             this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 144);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 122);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(119, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Lines with more indexes";
+            // 
+            // lblMatchingLines
+            // 
+            this.lblMatchingLines.AutoSize = true;
+            this.lblMatchingLines.Location = new System.Drawing.Point(172, 76);
+            this.lblMatchingLines.Name = "lblMatchingLines";
+            this.lblMatchingLines.Size = new System.Drawing.Size(56, 13);
+            this.lblMatchingLines.TabIndex = 4;
+            this.lblMatchingLines.Text = "Working...";
+            // 
             // lblDelimiter
             // 
             this.lblDelimiter.AutoSize = true;
@@ -114,6 +129,15 @@ namespace MultiLineStringFormatter
             this.label1.TabIndex = 0;
             this.label1.Text = "Selected Delimiter";
             // 
+            // ddIndexes
+            // 
+            this.ddIndexes.FormattingEnabled = true;
+            this.ddIndexes.Location = new System.Drawing.Point(172, 54);
+            this.ddIndexes.Name = "ddIndexes";
+            this.ddIndexes.Size = new System.Drawing.Size(79, 21);
+            this.ddIndexes.TabIndex = 4;
+            this.ddIndexes.SelectionChangeCommitted += new System.EventHandler(this.ddIndexes_SelectionChangeCommitted);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -123,15 +147,6 @@ namespace MultiLineStringFormatter
             this.label3.TabIndex = 2;
             this.label3.Text = "Number of Indexes";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Total Number of Lines";
-            // 
             // lblLessIndexes
             // 
             this.lblLessIndexes.AutoSize = true;
@@ -140,15 +155,6 @@ namespace MultiLineStringFormatter
             this.lblLessIndexes.Size = new System.Drawing.Size(56, 13);
             this.lblLessIndexes.TabIndex = 3;
             this.lblLessIndexes.Text = "Working...";
-            // 
-            // lblTotalLines
-            // 
-            this.lblTotalLines.AutoSize = true;
-            this.lblTotalLines.Location = new System.Drawing.Point(172, 26);
-            this.lblTotalLines.Name = "lblTotalLines";
-            this.lblTotalLines.Size = new System.Drawing.Size(56, 13);
-            this.lblTotalLines.TabIndex = 1;
-            this.lblTotalLines.Text = "Working...";
             // 
             // label4
             // 
@@ -168,14 +174,32 @@ namespace MultiLineStringFormatter
             this.label5.TabIndex = 3;
             this.label5.Text = "Lines with less indexes";
             // 
-            // ddIndexes
+            // lblMoreIndexes
             // 
-            this.ddIndexes.FormattingEnabled = true;
-            this.ddIndexes.Location = new System.Drawing.Point(172, 54);
-            this.ddIndexes.Name = "ddIndexes";
-            this.ddIndexes.Size = new System.Drawing.Size(79, 21);
-            this.ddIndexes.TabIndex = 4;
-            this.ddIndexes.SelectionChangeCommitted += new System.EventHandler(this.ddIndexes_SelectionChangeCommitted);
+            this.lblMoreIndexes.AutoSize = true;
+            this.lblMoreIndexes.Location = new System.Drawing.Point(172, 122);
+            this.lblMoreIndexes.Name = "lblMoreIndexes";
+            this.lblMoreIndexes.Size = new System.Drawing.Size(56, 13);
+            this.lblMoreIndexes.TabIndex = 3;
+            this.lblMoreIndexes.Text = "Working...";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Total Number of Lines";
+            // 
+            // lblTotalLines
+            // 
+            this.lblTotalLines.AutoSize = true;
+            this.lblTotalLines.Location = new System.Drawing.Point(172, 26);
+            this.lblTotalLines.Name = "lblTotalLines";
+            this.lblTotalLines.Size = new System.Drawing.Size(56, 13);
+            this.lblTotalLines.TabIndex = 1;
+            this.lblTotalLines.Text = "Working...";
             // 
             // dataGridView1
             // 
@@ -184,10 +208,6 @@ namespace MultiLineStringFormatter
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.actualIndexCountDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn2});
             this.dataGridView1.DataSource = this.lineInfoBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(7, 175);
             this.dataGridView1.Name = "dataGridView1";
@@ -234,24 +254,6 @@ namespace MultiLineStringFormatter
             this.bgAnalysis.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgAnalysis_DoWork);
             this.bgAnalysis.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgAnalysis_RunWorkerCompleted);
             this.bgAnalysis.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgAnalysis_ProgressChanged);
-            // 
-            // lblMatchingLines
-            // 
-            this.lblMatchingLines.AutoSize = true;
-            this.lblMatchingLines.Location = new System.Drawing.Point(172, 76);
-            this.lblMatchingLines.Name = "lblMatchingLines";
-            this.lblMatchingLines.Size = new System.Drawing.Size(56, 13);
-            this.lblMatchingLines.TabIndex = 4;
-            this.lblMatchingLines.Text = "Working...";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 122);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(119, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Lines with more indexes";
             // 
             // tableLayoutPanel2
             // 
@@ -300,39 +302,6 @@ namespace MultiLineStringFormatter
             this.label10.TabIndex = 4;
             this.label10.Text = "Working...";
             // 
-            // lblMoreIndexes
-            // 
-            this.lblMoreIndexes.AutoSize = true;
-            this.lblMoreIndexes.Location = new System.Drawing.Point(172, 122);
-            this.lblMoreIndexes.Name = "lblMoreIndexes";
-            this.lblMoreIndexes.Size = new System.Drawing.Size(56, 13);
-            this.lblMoreIndexes.TabIndex = 3;
-            this.lblMoreIndexes.Text = "Working...";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "LineNumber";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Line #";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 65;
-            // 
-            // actualIndexCountDataGridViewTextBoxColumn
-            // 
-            this.actualIndexCountDataGridViewTextBoxColumn.DataPropertyName = "ActualIndexCount";
-            this.actualIndexCountDataGridViewTextBoxColumn.HeaderText = "# Indexes";
-            this.actualIndexCountDataGridViewTextBoxColumn.Name = "actualIndexCountDataGridViewTextBoxColumn";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "LineText";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Line Text";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // lineInfoBindingSource
-            // 
-            this.lineInfoBindingSource.DataSource = typeof(MultiLineStringFormatter.LineInfo);
-            // 
             // AnalysisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,12 +318,12 @@ namespace MultiLineStringFormatter
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lineInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorLinesBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lineInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
