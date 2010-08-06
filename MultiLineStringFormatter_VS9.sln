@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1D52876-45BB-4E0C-9941-975049A38485}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Personal\CodeProject\MultiLineStringFormatter\article.html = ..\..\..\Personal\CodeProject\MultiLineStringFormatter\article.html
+		..\..\..\Personal\CodeProject\MultiLineStringFormatter\screenshot.jpg = ..\..\..\Personal\CodeProject\MultiLineStringFormatter\screenshot.jpg
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLineStringFormatter", "MultiLineStringFormatter.csproj", "{3BA4AA38-978E-4547-8981-9064E86ECA0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
