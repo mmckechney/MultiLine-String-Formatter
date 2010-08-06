@@ -108,7 +108,8 @@ namespace MultiLineStringFormatter
             
             this.dataGridView1.DataSource = lineData;
         }
-
+        //TODO: Set the DataSource on lineInfoBindingSource
+        //this.lineInfoBindingSource.DataSource = typeof(MultiLineStringFormatter.LineInfo);
 
 
 
