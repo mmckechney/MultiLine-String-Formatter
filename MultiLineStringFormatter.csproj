@@ -132,12 +132,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="StringManipulatorFormats.cfg" />
-    <None Include="StringManipulatorFormats.xsc">
-      <DependentUpon>StringManipulatorFormats.xsd</DependentUpon>
-    </None>
-    <None Include="StringManipulatorFormats.xss">
-      <DependentUpon>StringManipulatorFormats.xsd</DependentUpon>
-    </None>
     <Content Include="App.ico" />
     <Content Include="options.JPG" />
     <Content Include="StringManipulatorFormats.xsd">
@@ -155,6 +149,12 @@
     </Compile>
     <Compile Include="TrimmerData.cs" />
     <Compile Include="Utility.cs" />
+    <None Include="StringManipulatorFormats.xsc">
+      <DependentUpon>StringManipulatorFormats.xsd</DependentUpon>
+    </None>
+    <None Include="StringManipulatorFormats.xss">
+      <DependentUpon>StringManipulatorFormats.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

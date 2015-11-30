@@ -402,6 +402,7 @@ namespace MultiLineStringFormatter
                         tease = formats.Items[i].Value;
 
                     MenuItem item = new MenuItem(formats.Items[i].Name + " :: " + tease, new EventHandler(InsertFormat_Click));
+                    item.Tag = formats.Items[i];
                     this.ctxFormats.MenuItems.Add(item);
                 }
             }
@@ -443,6 +444,7 @@ namespace MultiLineStringFormatter
                 StringManipulatorCfgFormat frmt = new StringManipulatorCfgFormat();
                 frmt.Name = frmNew.Description;
                 frmt.Value = frmNew.Format;
+                frmt.Delimiter = rtbFormat.Text;
 
                 if (this.formats != null)
                 {
@@ -489,17 +491,13 @@ namespace MultiLineStringFormatter
             if (this.formats == null)
                 return;
 
-            string name = ((MenuItem)sender).Text.Split(':')[0];
-            for (int i = 0; i < this.formats.Items.Length; i++)
-            {
-                if (this.formats.Items[i].Name.Trim() == name.Trim())
-                {
-                    this.rtbFormat.Clear();
-                    this.rtbFormat.Text = this.formats.Items[i].Value;
-                    this.CurrentFormat = name.Trim();
-                    this.CurrentFormatChanged = false;
-                }
-            }
+            var format = ((MenuItem)sender).Tag as StringManipulatorCfgFormat;
+           
+            this.rtbFormat.Clear();
+            this.rtbFormat.Text = format.Value;
+            this.CurrentFormat = format.Name;
+            this.ddDelimiter.Text = format.Delimiter;
+            this.CurrentFormatChanged = false;
 
         }
         private void UpdateSavedFormat_Click(object sender, EventArgs e)
@@ -513,6 +511,7 @@ namespace MultiLineStringFormatter
                     {
                         this.formats.Items[i].Name = frmFormat.Description;
                         this.formats.Items[i].Value = frmFormat.Format;
+                        this.formats.Items[i].Delimiter = ddDelimiter.Text;
                         this.CurrentFormat = frmFormat.Description;
                         this.CurrentFormatChanged = false;
 
@@ -743,20 +742,19 @@ namespace MultiLineStringFormatter
             }
         }
 
+        private void ctxFormats_Popup(object sender, EventArgs e)
+        {
 
+        }
 
-      
+        private void ddDelimiter_TextUpdate(object sender, EventArgs e)
+        {
+            this.CurrentFormatChanged = true;
+        }
 
-      
-
-      
-
-
-
-      
-
-
-
-
+        private void ddDelimiter_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            this.CurrentFormatChanged = true;
+        }
     }
 }

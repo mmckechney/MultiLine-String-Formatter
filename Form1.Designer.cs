@@ -103,19 +103,19 @@ namespace MultiLineStringFormatter
             this.openToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(112, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(104, 48);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -146,6 +146,8 @@ namespace MultiLineStringFormatter
             this.ddDelimiter.Name = "ddDelimiter";
             this.ddDelimiter.Size = new System.Drawing.Size(104, 21);
             this.ddDelimiter.TabIndex = 21;
+            this.ddDelimiter.SelectionChangeCommitted += new System.EventHandler(this.ddDelimiter_SelectionChangeCommitted);
+            this.ddDelimiter.TextUpdate += new System.EventHandler(this.ddDelimiter_TextUpdate);
             // 
             // pnlResults
             // 
@@ -253,7 +255,7 @@ namespace MultiLineStringFormatter
             this.toolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 7);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(90, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(95, 24);
             this.menuStrip2.TabIndex = 26;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -271,7 +273,7 @@ namespace MultiLineStringFormatter
             this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
             this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(72, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(77, 20);
             this.toolStripMenuItem1.Text = "Options";
             // 
             // trimEndsOnInputValuesToolStripMenuItem
@@ -280,36 +282,36 @@ namespace MultiLineStringFormatter
             this.trimEndsOnInputValuesToolStripMenuItem.CheckOnClick = true;
             this.trimEndsOnInputValuesToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.trimEndsOnInputValuesToolStripMenuItem.Name = "trimEndsOnInputValuesToolStripMenuItem";
-            this.trimEndsOnInputValuesToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.trimEndsOnInputValuesToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.trimEndsOnInputValuesToolStripMenuItem.Text = "Trim Ends on Input Values";
             // 
             // excludeEmptyLinesToolStripMenuItem
             // 
             this.excludeEmptyLinesToolStripMenuItem.CheckOnClick = true;
             this.excludeEmptyLinesToolStripMenuItem.Name = "excludeEmptyLinesToolStripMenuItem";
-            this.excludeEmptyLinesToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.excludeEmptyLinesToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.excludeEmptyLinesToolStripMenuItem.Text = "Exclude Empty Lines";
             this.excludeEmptyLinesToolStripMenuItem.ToolTipText = "A line is considered empty if:\r\nIt is blank, \r\nOnly blank values are included wit" +
-                "h the delimiters,\r\nIt contains an item array less than the lowest formater index" +
-                "\r\n\r\n";
+    "h the delimiters,\r\nIt contains an item array less than the lowest formater index" +
+    "\r\n\r\n";
             // 
             // removeCarriageReturnsFromOutputToolStripMenuItem
             // 
             this.removeCarriageReturnsFromOutputToolStripMenuItem.CheckOnClick = true;
             this.removeCarriageReturnsFromOutputToolStripMenuItem.Name = "removeCarriageReturnsFromOutputToolStripMenuItem";
-            this.removeCarriageReturnsFromOutputToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.removeCarriageReturnsFromOutputToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.removeCarriageReturnsFromOutputToolStripMenuItem.Text = "Remove Final Carriage Returns from Output";
             this.removeCarriageReturnsFromOutputToolStripMenuItem.ToolTipText = "Removes terminating Carriage Returns ";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(293, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(302, 6);
             // 
             // excludeLinesWithMissingValuesToolStripMenuItem
             // 
             this.excludeLinesWithMissingValuesToolStripMenuItem.Name = "excludeLinesWithMissingValuesToolStripMenuItem";
-            this.excludeLinesWithMissingValuesToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.excludeLinesWithMissingValuesToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.excludeLinesWithMissingValuesToolStripMenuItem.Text = "Lines with Missing Values:";
             // 
             // excludeToolStripMenuItem
@@ -319,7 +321,7 @@ namespace MultiLineStringFormatter
             this.excludeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.excludeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.excludeToolStripMenuItem.Name = "excludeToolStripMenuItem";
-            this.excludeToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.excludeToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.excludeToolStripMenuItem.Text = "Exclude";
             this.excludeToolStripMenuItem.ToolTipText = "Select to exclude lines that don\'t contain all value items";
             this.excludeToolStripMenuItem.CheckedChanged += new System.EventHandler(this.excludeToolStripMenuItem_CheckChanged);
@@ -329,10 +331,10 @@ namespace MultiLineStringFormatter
             this.fillWithDefaultTextToolStripMenuItem.CheckOnClick = true;
             this.fillWithDefaultTextToolStripMenuItem.Margin = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.fillWithDefaultTextToolStripMenuItem.Name = "fillWithDefaultTextToolStripMenuItem";
-            this.fillWithDefaultTextToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.fillWithDefaultTextToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.fillWithDefaultTextToolStripMenuItem.Text = "Fill With DefaultText:";
             this.fillWithDefaultTextToolStripMenuItem.ToolTipText = "Select and add a default text value to be \r\nadded in place of a missing value ite" +
-                "m.";
+    "m.";
             this.fillWithDefaultTextToolStripMenuItem.CheckedChanged += new System.EventHandler(this.fillWithDefaultTextToolStripMenuItem_CheckedChanged);
             // 
             // defaultFillTextMenuItem
@@ -341,10 +343,10 @@ namespace MultiLineStringFormatter
             this.defaultFillTextMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.defaultFillTextMenuItem.Margin = new System.Windows.Forms.Padding(21, 1, 1, 1);
             this.defaultFillTextMenuItem.Name = "defaultFillTextMenuItem";
-            this.defaultFillTextMenuItem.Size = new System.Drawing.Size(200, 21);
+            this.defaultFillTextMenuItem.Size = new System.Drawing.Size(200, 23);
             this.defaultFillTextMenuItem.Text = "<Add Default Text Here>";
-            this.defaultFillTextMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.defaultFillTextMenuItem_MouseDown);
             this.defaultFillTextMenuItem.KeyUp += new System.Windows.Forms.KeyEventHandler(this.defaultFillTextMenuItem_KeyUp);
+            this.defaultFillTextMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.defaultFillTextMenuItem_MouseDown);
             // 
             // btnProcess
             // 
@@ -361,9 +363,9 @@ namespace MultiLineStringFormatter
             // 
             // rtbStringResults
             // 
-            this.rtbStringResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbStringResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbStringResults.ContextMenuStrip = this.ctxCopy;
             this.rtbStringResults.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbStringResults.Location = new System.Drawing.Point(19, 34);
@@ -429,9 +431,9 @@ namespace MultiLineStringFormatter
             // 
             // rtbFormat
             // 
-            this.rtbFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbFormat.ContextMenu = this.ctxFormats;
             this.rtbFormat.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbFormat.Location = new System.Drawing.Point(19, 26);
@@ -440,6 +442,10 @@ namespace MultiLineStringFormatter
             this.rtbFormat.TabIndex = 6;
             this.rtbFormat.Text = "";
             this.rtbFormat.TextChanged += new System.EventHandler(this.rtbFormat_TextChanged);
+            // 
+            // ctxFormats
+            // 
+            this.ctxFormats.Popup += new System.EventHandler(this.ctxFormats_Popup);
             // 
             // label2
             // 
@@ -457,8 +463,8 @@ namespace MultiLineStringFormatter
             this.bgFormatProcessor.WorkerReportsProgress = true;
             this.bgFormatProcessor.WorkerSupportsCancellation = true;
             this.bgFormatProcessor.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.bgFormatProcessor.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             this.bgFormatProcessor.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.bgFormatProcessor.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // splitter1
             // 
@@ -498,20 +504,20 @@ namespace MultiLineStringFormatter
             this.openSourceTextFileToolStripMenuItem,
             this.fileTrimUtilityToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openSourceTextFileToolStripMenuItem
             // 
             this.openSourceTextFileToolStripMenuItem.Name = "openSourceTextFileToolStripMenuItem";
-            this.openSourceTextFileToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.openSourceTextFileToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.openSourceTextFileToolStripMenuItem.Text = "Open Source Text File";
             this.openSourceTextFileToolStripMenuItem.Click += new System.EventHandler(this.openSourceTextFileToolStripMenuItem_Click);
             // 
             // fileTrimUtilityToolStripMenuItem
             // 
             this.fileTrimUtilityToolStripMenuItem.Name = "fileTrimUtilityToolStripMenuItem";
-            this.fileTrimUtilityToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.fileTrimUtilityToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.fileTrimUtilityToolStripMenuItem.Text = "File Trim Utility";
             this.fileTrimUtilityToolStripMenuItem.Click += new System.EventHandler(this.fileTrimUtilityToolStripMenuItem_Click);
             // 
@@ -526,9 +532,9 @@ namespace MultiLineStringFormatter
             // 
             // rtbStringSource
             // 
-            this.rtbStringSource.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbStringSource.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbStringSource.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbStringSource.Location = new System.Drawing.Point(19, 53);
             this.rtbStringSource.Name = "rtbStringSource";
@@ -541,7 +547,7 @@ namespace MultiLineStringFormatter
             // openFileDialog1
             // 
             this.openFileDialog1.Filter = "Text Files (*.txt)|*.txt|Comma Separated Files (*.csv)|*.csv|SQL Files (*.sql)|*." +
-                "sql|All Files (*.*)|*.*";
+    "sql|All Files (*.*)|*.*";
             // 
             // toolTip1
             // 
@@ -563,8 +569,8 @@ namespace MultiLineStringFormatter
             this.Name = "FormatterForm";
             this.Text = "Multi-Line String Formatter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormatterForm_FormClosing);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormatterForm_KeyUp);
             this.Load += new System.EventHandler(this.FormatterForm_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormatterForm_KeyUp);
             this.contextMenuStrip1.ResumeLayout(false);
             this.pnlResults.ResumeLayout(false);
             this.pnlResults.PerformLayout();
