@@ -68,7 +68,7 @@ namespace MultiLineStringFormatter
         /// <summary>
         /// Name of the configuration file that stores the saved string format
         /// </summary>
-        private string configFileName = string.Empty;
+        private string savedFormatConfigFile = string.Empty;
         /// <summary>
         /// Class to store the string formats in memory
         /// </summary>
@@ -372,6 +372,7 @@ namespace MultiLineStringFormatter
         {
             this.ddDelimiter.SelectedIndex = 0;
             executingLocation = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            this.savedFormatConfigFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"MultiLineStringFormatter\StringManipulatorFormats.cfg");
             LoadSavedFormats();
         }
         /// <summary>
@@ -379,10 +380,9 @@ namespace MultiLineStringFormatter
         /// </summary>
         private void LoadSavedFormats()
         {
-            configFileName = executingLocation + @"\StringManipulatorFormats.cfg";
-            if (Directory.Exists(executingLocation) && File.Exists(configFileName))
+            if (File.Exists(savedFormatConfigFile))
             {
-                using (StreamReader sr = new StreamReader(configFileName))
+                using (StreamReader sr = new StreamReader(savedFormatConfigFile))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(StringManipulatorCfg));
                     object obj = serializer.Deserialize(sr);
@@ -438,6 +438,11 @@ namespace MultiLineStringFormatter
         /// <param name="e"></param>
         private void SaveNewFormat_Click(object sender, System.EventArgs e)
         {
+            if (!Directory.Exists(Path.GetDirectoryName(this.savedFormatConfigFile)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(this.savedFormatConfigFile));
+            }
+
             NewFormatForm frmNew = new NewFormatForm(this.rtbFormat.Text);
             if (DialogResult.OK == frmNew.ShowDialog())
             {
@@ -464,7 +469,7 @@ namespace MultiLineStringFormatter
                 try
                 {
                     XmlSerializer xmlS = new XmlSerializer(typeof(StringManipulatorCfg));
-                    tw = new System.Xml.XmlTextWriter(this.configFileName, Encoding.UTF8);
+                    tw = new System.Xml.XmlTextWriter(this.savedFormatConfigFile, Encoding.UTF8);
                     tw.Indentation = 4;
                     tw.Formatting = System.Xml.Formatting.Indented;
                     xmlS.Serialize(tw, this.formats);
@@ -522,7 +527,7 @@ namespace MultiLineStringFormatter
                 try
                 {
                     XmlSerializer xmlS = new XmlSerializer(typeof(StringManipulatorCfg));
-                    tw = new System.Xml.XmlTextWriter(this.configFileName, Encoding.UTF8);
+                    tw = new System.Xml.XmlTextWriter(this.savedFormatConfigFile, Encoding.UTF8);
                     tw.Indentation = 4;
                     tw.Formatting = System.Xml.Formatting.Indented;
                     xmlS.Serialize(tw, this.formats);
@@ -740,11 +745,6 @@ namespace MultiLineStringFormatter
                     toolTip1.Show("Copied to Clipboard:\r\n\t"+rtbStringResults.Lines[currentResultsLine] + "\t\r\n", this, pnt, 3000);
                 }
             }
-        }
-
-        private void ctxFormats_Popup(object sender, EventArgs e)
-        {
-
         }
 
         private void ddDelimiter_TextUpdate(object sender, EventArgs e)

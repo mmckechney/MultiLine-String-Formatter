@@ -443,10 +443,6 @@ namespace MultiLineStringFormatter
             this.rtbFormat.Text = "";
             this.rtbFormat.TextChanged += new System.EventHandler(this.rtbFormat_TextChanged);
             // 
-            // ctxFormats
-            // 
-            this.ctxFormats.Popup += new System.EventHandler(this.ctxFormats_Popup);
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
