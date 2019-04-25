@@ -115,21 +115,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>NewFormatForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <None Include="StringManipulatorFormats.cfg" />
     <Content Include="App.ico" />
     <Content Include="options.JPG" />
@@ -137,11 +123,6 @@
       <LastGenOutput>StringManipulatorFormats.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <Compile Include="StringData.cs" />
     <Compile Include="StringManipulatorFormats.cs">
       <DependentUpon>StringManipulatorFormats.xsd</DependentUpon>
