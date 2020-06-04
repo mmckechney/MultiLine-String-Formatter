@@ -9,6 +9,8 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Collections;
 using System.Text.RegularExpressions;
+using System.Linq;
+
 namespace MultiLineStringFormatter
 {
     /// <summary>
@@ -35,7 +37,7 @@ namespace MultiLineStringFormatter
                 this._currentFormat = value;
                 if(this._currentFormat.Length > 0)
                 {
-                    MenuItem[] items = this.ctxFormats.MenuItems.Find("mnuUpdateFormat", false);
+                    ToolStripItem[] items = this.ctxFormats.Items.Find("mnuUpdateFormat", false);
                     if (items.Length > 0)
                         items[0].Text = "Update Saved format \"" + this._currentFormat + "\"";
  
@@ -56,7 +58,7 @@ namespace MultiLineStringFormatter
             set
             {
                 this._currentFormatChanged = value;
-                MenuItem[] items = this.ctxFormats.MenuItems.Find("mnuUpdateFormat", false);
+                ToolStripItem[] items = this.ctxFormats.Items.Find("mnuUpdateFormat", false);
                 if (items.Length > 0)
                     items[0].Enabled = this._currentFormatChanged;
             }
@@ -196,7 +198,7 @@ namespace MultiLineStringFormatter
         /// <param name="e"></param>
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            string delimiterString = (ddDelimiter.SelectedItem != null) ? ddDelimiter.SelectedItem.ToString() : ddDelimiter.Text;
+            string delimiterString = ddDelimiter.Text;
 
             StringData dat = new StringData(rtbFormat.Text, rtbStringSource.Lines, delimiterString,
                 removeCarriageReturnsFromOutputToolStripMenuItem.Checked,
@@ -372,7 +374,7 @@ namespace MultiLineStringFormatter
         {
             this.ddDelimiter.SelectedIndex = 0;
             executingLocation = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            this.savedFormatConfigFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"MultiLineStringFormatter\StringManipulatorFormats.cfg");
+            this.savedFormatConfigFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"MultiLineStringFormatter\StringManipulatorFormats1.cfg");
             LoadSavedFormats();
         }
         /// <summary>
@@ -389,27 +391,27 @@ namespace MultiLineStringFormatter
                     this.formats = (StringManipulatorCfg)obj;
                 }
             }
-            ctxFormats.MenuItems.Clear();
+            ctxFormats.Items.Clear();
             if (formats != null)
             {
 
                 string tease = string.Empty;
-                for (int i = 0; i < formats.Items.Length; i++)
+                for (int i = 0; i < formats.Items.Count; i++)
                 {
                     if (formats.Items[i].Value.Length > 30)
                         tease = formats.Items[i].Value.Substring(0, 30) + " ...";
                     else
                         tease = formats.Items[i].Value;
 
-                    MenuItem item = new MenuItem(formats.Items[i].Name + " :: " + tease, new EventHandler(InsertFormat_Click));
+                    ToolStripMenuItem item = new ToolStripMenuItem(formats.Items[i].Name + " :: " + tease, null, new EventHandler(InsertFormat_Click));
                     item.Tag = formats.Items[i];
-                    this.ctxFormats.MenuItems.Add(item);
+                    this.ctxFormats.Items.Add(item);
                 }
             }
-            if (this.ctxFormats.MenuItems.Count > 0)
-                this.ctxFormats.MenuItems.Add("-");
+            if (this.ctxFormats.Items.Count > 0)
+                this.ctxFormats.Items.Add("-");
 
-            this.ctxFormats.MenuItems.AddRange(SaveNewFormatMenuItem());
+            this.ctxFormats.Items.AddRange(SaveNewFormatMenuItem());
 
 
         }
@@ -417,12 +419,12 @@ namespace MultiLineStringFormatter
        /// Pre-defined menu item for saving the string format 
        /// </summary>
        /// <returns></returns>
-        private MenuItem[] SaveNewFormatMenuItem()
+        private ToolStripMenuItem[] SaveNewFormatMenuItem()
         {
-            MenuItem[] items = new MenuItem[3];
-            items[0] =  new MenuItem("Save Current Format...", new EventHandler(SaveNewFormat_Click));
-            items[1] = new MenuItem("-");
-            items[2] = new MenuItem("Update Saved Format", new EventHandler(UpdateSavedFormat_Click));
+            ToolStripMenuItem[] items = new ToolStripMenuItem[3];
+            items[0] =  new ToolStripMenuItem("Save Current Format...",null, new EventHandler(SaveNewFormat_Click));
+            items[1] = new ToolStripMenuItem("-");
+            items[2] = new ToolStripMenuItem("Update Saved Format", null, new EventHandler(UpdateSavedFormat_Click));
             items[2].Enabled = false;
             items[2].Name = "mnuUpdateFormat";
             return items;
@@ -446,23 +448,23 @@ namespace MultiLineStringFormatter
             NewFormatForm frmNew = new NewFormatForm(this.rtbFormat.Text);
             if (DialogResult.OK == frmNew.ShowDialog())
             {
-                StringManipulatorCfgFormat frmt = new StringManipulatorCfgFormat();
+                Format frmt = new Format();
                 frmt.Name = frmNew.Description;
                 frmt.Value = frmNew.Format;
-                frmt.Delimiter = rtbFormat.Text;
+                frmt.Delimiter = ddDelimiter.Text;
 
                 if (this.formats != null)
                 {
                     ArrayList lst = new ArrayList(this.formats.Items);
                     lst.Add(frmt);
-                    StringManipulatorCfgFormat[] newlist = new StringManipulatorCfgFormat[lst.Count];
+                    Format[] newlist = new Format[lst.Count];
                     lst.CopyTo(newlist);
-                    this.formats.Items = newlist;
+                    this.formats.Items = newlist.ToList();
                 }
                 else
                 {
                     this.formats = new StringManipulatorCfg();
-                    this.formats.Items = new StringManipulatorCfgFormat[] { frmt };
+                    this.formats.Items.Add(frmt);
                 }
 
                 System.Xml.XmlTextWriter tw = null;
@@ -496,7 +498,7 @@ namespace MultiLineStringFormatter
             if (this.formats == null)
                 return;
 
-            var format = ((MenuItem)sender).Tag as StringManipulatorCfgFormat;
+            var format = ((ToolStripMenuItem)sender).Tag as Format;
            
             this.rtbFormat.Clear();
             this.rtbFormat.Text = format.Value;
@@ -510,7 +512,7 @@ namespace MultiLineStringFormatter
             NewFormatForm frmFormat = new NewFormatForm(rtbFormat.Text, this.CurrentFormat);
             if (DialogResult.OK == frmFormat.ShowDialog())
             {
-                for (int i = 0; i < this.formats.Items.Length; i++)
+                for (int i = 0; i < this.formats.Items.Count; i++)
                 {
                     if (this.formats.Items[i].Name.Trim() == this.CurrentFormat)
                     {

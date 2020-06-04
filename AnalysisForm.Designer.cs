@@ -81,144 +81,159 @@ namespace MultiLineStringFormatter
             this.tableLayoutPanel1.Controls.Add(this.lblMoreIndexes, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblTotalLines, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 14);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 144);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(302, 166);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 122);
+            this.label7.Location = new System.Drawing.Point(5, 141);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(119, 13);
+            this.label7.Size = new System.Drawing.Size(134, 15);
             this.label7.TabIndex = 5;
             this.label7.Text = "Lines with more indexes";
             // 
             // lblMatchingLines
             // 
             this.lblMatchingLines.AutoSize = true;
-            this.lblMatchingLines.Location = new System.Drawing.Point(172, 76);
+            this.lblMatchingLines.Location = new System.Drawing.Point(202, 88);
+            this.lblMatchingLines.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMatchingLines.Name = "lblMatchingLines";
-            this.lblMatchingLines.Size = new System.Drawing.Size(56, 13);
+            this.lblMatchingLines.Size = new System.Drawing.Size(61, 15);
             this.lblMatchingLines.TabIndex = 4;
             this.lblMatchingLines.Text = "Working...";
             // 
             // lblDelimiter
             // 
             this.lblDelimiter.AutoSize = true;
-            this.lblDelimiter.Location = new System.Drawing.Point(172, 1);
+            this.lblDelimiter.Location = new System.Drawing.Point(202, 1);
+            this.lblDelimiter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDelimiter.Name = "lblDelimiter";
-            this.lblDelimiter.Size = new System.Drawing.Size(56, 13);
+            this.lblDelimiter.Size = new System.Drawing.Size(61, 15);
             this.lblDelimiter.TabIndex = 4;
             this.lblDelimiter.Text = "Working...";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 1);
+            this.label1.Location = new System.Drawing.Point(5, 1);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.Size = new System.Drawing.Size(102, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Selected Delimiter";
             // 
             // ddIndexes
             // 
             this.ddIndexes.FormattingEnabled = true;
-            this.ddIndexes.Location = new System.Drawing.Point(172, 54);
+            this.ddIndexes.Location = new System.Drawing.Point(202, 62);
+            this.ddIndexes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ddIndexes.Name = "ddIndexes";
-            this.ddIndexes.Size = new System.Drawing.Size(79, 21);
+            this.ddIndexes.Size = new System.Drawing.Size(92, 23);
             this.ddIndexes.TabIndex = 4;
             this.ddIndexes.SelectionChangeCommitted += new System.EventHandler(this.ddIndexes_SelectionChangeCommitted);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 51);
+            this.label3.Location = new System.Drawing.Point(5, 59);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 13);
+            this.label3.Size = new System.Drawing.Size(108, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Number of Indexes";
             // 
             // lblLessIndexes
             // 
             this.lblLessIndexes.AutoSize = true;
-            this.lblLessIndexes.Location = new System.Drawing.Point(172, 101);
+            this.lblLessIndexes.Location = new System.Drawing.Point(202, 117);
+            this.lblLessIndexes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLessIndexes.Name = "lblLessIndexes";
-            this.lblLessIndexes.Size = new System.Drawing.Size(56, 13);
+            this.lblLessIndexes.Size = new System.Drawing.Size(61, 15);
             this.lblLessIndexes.TabIndex = 3;
             this.lblLessIndexes.Text = "Working...";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 76);
+            this.label4.Location = new System.Drawing.Point(5, 88);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 13);
+            this.label4.Size = new System.Drawing.Size(180, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "Lines with matching index count";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 101);
+            this.label5.Location = new System.Drawing.Point(5, 117);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 13);
+            this.label5.Size = new System.Drawing.Size(125, 15);
             this.label5.TabIndex = 3;
             this.label5.Text = "Lines with less indexes";
             // 
             // lblMoreIndexes
             // 
             this.lblMoreIndexes.AutoSize = true;
-            this.lblMoreIndexes.Location = new System.Drawing.Point(172, 122);
+            this.lblMoreIndexes.Location = new System.Drawing.Point(202, 141);
+            this.lblMoreIndexes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMoreIndexes.Name = "lblMoreIndexes";
-            this.lblMoreIndexes.Size = new System.Drawing.Size(56, 13);
+            this.lblMoreIndexes.Size = new System.Drawing.Size(61, 15);
             this.lblMoreIndexes.TabIndex = 3;
             this.lblMoreIndexes.Text = "Working...";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 26);
+            this.label2.Location = new System.Drawing.Point(5, 30);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 13);
+            this.label2.Size = new System.Drawing.Size(123, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Total Number of Lines";
             // 
             // lblTotalLines
             // 
             this.lblTotalLines.AutoSize = true;
-            this.lblTotalLines.Location = new System.Drawing.Point(172, 26);
+            this.lblTotalLines.Location = new System.Drawing.Point(202, 30);
+            this.lblTotalLines.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalLines.Name = "lblTotalLines";
-            this.lblTotalLines.Size = new System.Drawing.Size(56, 13);
+            this.lblTotalLines.Size = new System.Drawing.Size(61, 15);
             this.lblTotalLines.TabIndex = 1;
             this.lblTotalLines.Text = "Working...";
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.DataSource = this.lineInfoBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 175);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 202);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(890, 237);
+            this.dataGridView1.Size = new System.Drawing.Size(1038, 273);
             this.dataGridView1.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(7, 159);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(8, 183);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(284, 13);
             this.label6.TabIndex = 2;
@@ -229,31 +244,32 @@ namespace MultiLineStringFormatter
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statGeneral,
             this.statProgress});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 420);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 486);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(905, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1056, 24);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // statGeneral
             // 
             this.statGeneral.Name = "statGeneral";
-            this.statGeneral.Size = new System.Drawing.Size(788, 17);
+            this.statGeneral.Size = new System.Drawing.Size(920, 19);
             this.statGeneral.Spring = true;
             this.statGeneral.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // statProgress
             // 
             this.statProgress.Name = "statProgress";
-            this.statProgress.Size = new System.Drawing.Size(100, 16);
+            this.statProgress.Size = new System.Drawing.Size(117, 18);
             // 
             // bgAnalysis
             // 
             this.bgAnalysis.WorkerReportsProgress = true;
             this.bgAnalysis.WorkerSupportsCancellation = true;
             this.bgAnalysis.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgAnalysis_DoWork);
-            this.bgAnalysis.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgAnalysis_RunWorkerCompleted);
             this.bgAnalysis.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgAnalysis_ProgressChanged);
+            this.bgAnalysis.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgAnalysis_RunWorkerCompleted);
             // 
             // tableLayoutPanel2
             // 
@@ -280,7 +296,7 @@ namespace MultiLineStringFormatter
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(4, 106);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 13);
+            this.label8.Size = new System.Drawing.Size(94, 20);
             this.label8.TabIndex = 5;
             this.label8.Text = "Lines with more indexes";
             // 
@@ -289,7 +305,7 @@ namespace MultiLineStringFormatter
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(134, 64);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 13);
+            this.label9.Size = new System.Drawing.Size(61, 15);
             this.label9.TabIndex = 4;
             this.label9.Text = "Working...";
             // 
@@ -304,14 +320,15 @@ namespace MultiLineStringFormatter
             // 
             // AnalysisForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 442);
+            this.ClientSize = new System.Drawing.Size(1056, 510);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "AnalysisForm";
             this.Text = "Data Analysis";
             this.Load += new System.EventHandler(this.AnalysisForm_Load);
