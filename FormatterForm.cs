@@ -340,7 +340,7 @@ namespace MultiLineStringFormatter
                     if (tenPercent > 0 && linesProcessed % tenPercent == 0)
                         worker.ReportProgress(linesProcessed);
                 }
-                catch (System.FormatException exe)
+                catch (System.FormatException)
                 {
                     if (!data.ExcludeMissingValues)
                     {

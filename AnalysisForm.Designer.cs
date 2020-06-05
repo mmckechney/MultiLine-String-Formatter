@@ -358,16 +358,11 @@ namespace MultiLineStringFormatter
         private System.Windows.Forms.Label lblLessIndexes;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource errorLinesBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lineNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lineTextDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statGeneral;
         private System.Windows.Forms.ToolStripProgressBar statProgress;
         private System.ComponentModel.BackgroundWorker bgAnalysis;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn actualIndexCountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.BindingSource lineInfoBindingSource;
         private System.Windows.Forms.ComboBox ddIndexes;
         private System.Windows.Forms.Label lblDelimiter;
