@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-    <PropertyGroup>
+  <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
