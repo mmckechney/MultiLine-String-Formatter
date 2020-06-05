@@ -1,3 +1,5 @@
+![.NET Core](https://github.com/mmckechney/MultiLine-String-Formatter/workflows/.NET%20Core/badge.svg?branch=master)
+
 # Introduction
 - Have you ever had some text data from a spreadsheet or database output or some other basic delimited file that you need to process into a set of SQL scripts to insert into a database?
 - Have you ever needed to re-order columns of a pipe delimited file?
