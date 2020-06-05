@@ -65,7 +65,7 @@ namespace MultiLineStringFormatter
             this.pnlFormat = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.rtbFormat = new System.Windows.Forms.RichTextBox();
-            this.ctxFormats = new System.Windows.Forms.ContextMenu();
+            this.ctxFormats = new System.Windows.Forms.ContextMenuStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.bgFormatProcessor = new System.ComponentModel.BackgroundWorker();
             this.splitter1 = new System.Windows.Forms.Splitter();
@@ -434,7 +434,7 @@ namespace MultiLineStringFormatter
             this.rtbFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbFormat.ContextMenu = this.ctxFormats;
+            this.rtbFormat.ContextMenuStrip = this.ctxFormats;
             this.rtbFormat.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbFormat.Location = new System.Drawing.Point(19, 26);
             this.rtbFormat.Name = "rtbFormat";
@@ -597,7 +597,7 @@ namespace MultiLineStringFormatter
         private System.Windows.Forms.Panel pnlFormat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtbFormat;
-        private System.Windows.Forms.ContextMenu ctxFormats;
+        private System.Windows.Forms.ContextMenuStrip ctxFormats;
         private System.Windows.Forms.Label label2;
         private System.ComponentModel.BackgroundWorker bgFormatProcessor;
         private System.Windows.Forms.Splitter splitter1;

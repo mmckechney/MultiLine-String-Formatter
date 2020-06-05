@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -18,6 +19,13 @@ namespace MultiLineStringFormatter
         public AnalysisForm(AnalysisData data) : this()
         {
             this.data = data;
+            
+            DataGridViewColumn c = new DataGridViewColumn();
+            c.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            c.DataPropertyName = "LineText";
+            c.HeaderText = "Line Text";
+            c.CellTemplate = new DataGridViewTextBoxCell();
+            this.dataGridView1.Columns.Add(c);
         }
         private void AnalysisForm_Load(object sender, EventArgs e)
         {
@@ -75,7 +83,10 @@ namespace MultiLineStringFormatter
              }
              ddIndexes.SelectedIndex = ddIndexes.Items.Count-1;
              ddIndexes_SelectionChangeCommitted(null, EventArgs.Empty);
-           
+            this.lineInfoBindingSource.DataSource = data.LineData;
+            //this.dataGridView1.DataSource = data.LineData.Select(d => d.LineText);
+            this.dataGridView1.Invalidate();
+
         }
 
         private void ddIndexes_SelectionChangeCommitted(object sender, EventArgs e)
@@ -105,11 +116,13 @@ namespace MultiLineStringFormatter
             this.lblMatchingLines.Text = lineData.Count.ToString();
             this.lblLessIndexes.Text = lessIndexes.ToString();
             this.lblMoreIndexes.Text = moreIndexes.ToString();
+            this.lineInfoBindingSource.DataSource = lineData;
+            //this.dataGridView1.DataSource = 
+            this.dataGridView1.Invalidate();
             
-            this.dataGridView1.DataSource = lineData;
         }
         //TODO: Set the DataSource on lineInfoBindingSource
-        //this.lineInfoBindingSource.DataSource = typeof(MultiLineStringFormatter.LineInfo);
+      
 
 
 
