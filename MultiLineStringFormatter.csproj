@@ -8,5 +8,6 @@
 
     <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
 </Project>
