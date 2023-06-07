@@ -10,7 +10,7 @@ If you answered yes to any of these, then you've probably tried using Excel or c
 
 # Basic Usage for string manipulation
 
-he screen consists of 3 sections, one each for the raw text input, the format definition and then the output.
+The screen consists of 3 sections, one each for the raw text input, the format definition and then the output.
 
 ## Top Section: Input Text
 Simply paste in your text. It can be straight out of Excel, a Word table, a CSV, pipe delimited, etc. The text box will accept any format and keep all delimiters, including non-printable ones such as tabs. Once you define your delimiter (middle section) you can even click on any section of a line to easily display the index and the full value of the index that the cursor is placed at via a tool tip.
