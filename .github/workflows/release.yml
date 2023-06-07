@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.x
+        dotnet-version: 7.x
 
     - name: Install dependencies
       run: dotnet restore src/MultiLineStringFormatter.sln
@@ -27,8 +27,8 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: MultiLineStringFormatter
-        path: src/bin/Release/net6.0-windows
-
+        path: src/bin/Release/net7.0-windows
+        
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
