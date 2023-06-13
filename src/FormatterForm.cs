@@ -324,7 +324,12 @@ namespace MultiLineStringFormatter
 
                 try
                 {
-                    sb.Append(String.Format(data.Format, vals));
+                    var tmpLine = data.Format;
+                    for(int z = 0;z<matches.Count;z++)
+                    {
+                        tmpLine = tmpLine.Replace(matches[z].Value, vals[z]);
+                    }
+                    sb.Append(tmpLine);
                     if (!data.RemoveCarrigeReturns)
                         sb.Append("\r\n");
 
