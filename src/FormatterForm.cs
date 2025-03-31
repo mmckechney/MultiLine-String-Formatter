@@ -327,7 +327,8 @@ namespace MultiLineStringFormatter
                     var tmpLine = data.Format;
                     for(int z = 0;z<matches.Count;z++)
                     {
-                        tmpLine = tmpLine.Replace(matches[z].Value, vals[z]);
+                        Int32.TryParse(matches[z].Value.Replace("{", "").Replace("}", ""), out int tmpIndex);
+                        tmpLine = tmpLine.Replace(matches[z].Value, vals[tmpIndex]);
                     }
                     sb.Append(tmpLine);
                     if (!data.RemoveCarrigeReturns)
