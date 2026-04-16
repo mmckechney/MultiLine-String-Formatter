@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MultiLineStringFormatter.Maui.ViewModels"
+             x:Class="MultiLineStringFormatter.Maui.Views.FormatterPage"
+             Title="Multi-Line String Formatter">
+
+    <ContentPage.BindingContext>
+        <vm:FormatterViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,*,Auto,*,Auto,*,Auto" Padding="10" RowSpacing="5">
+
+        <!-- Top Section: Source Input -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto,Auto">
+            <Label Text="Source Text" VerticalOptions="Center" FontAttributes="Bold" />
+            <Button Grid.Column="1" Text="Open File" Command="{Binding OpenSourceFileCommand}" Margin="5,0" />
+            <Button Grid.Column="2" Text="Analysis" Command="{Binding OpenAnalysisCommand}" Margin="5,0" />
+            <Button Grid.Column="3" Text="File Trimmer" Command="{Binding OpenFileTrimmerCommand}" Margin="5,0" />
+        </Grid>
+
+        <Editor Grid.Row="1" Text="{Binding SourceText}" Placeholder="Paste your delimited text here..."
+                AutoSize="Disabled" FontFamily="Consolas" />
+
+        <!-- Middle Section: Format Definition -->
+        <Grid Grid.Row="2" ColumnDefinitions="Auto,*,Auto,Auto">
+            <Label Text="Format:" VerticalOptions="Center" FontAttributes="Bold" />
+            <Grid Grid.Column="1" ColumnDefinitions="Auto,*" Margin="10,0">
+                <Label Text="Delimiter:" VerticalOptions="Center" />
+                <Picker Grid.Column="1" ItemsSource="{Binding Delimiters}" SelectedItem="{Binding SelectedDelimiter}"
+                        WidthRequest="120" />
+            </Grid>
+            <Button Grid.Column="2" Text="Save Format" Command="{Binding SaveFormatCommand}" Margin="5,0" />
+            <MenuBarItem Grid.Column="3" Text="Options">
+                <MenuFlyoutItem Text="Trim Input Values" />
+            </MenuBarItem>
+        </Grid>
+
+        <Grid Grid.Row="3" ColumnDefinitions="*,Auto">
+            <Editor Text="{Binding FormatText}"
+                    Placeholder="Enter format string (e.g. INSERT INTO table VALUES('{0}', '{1}'))"
+                    AutoSize="Disabled" FontFamily="Consolas" />
+            <!-- Saved Formats List -->
+            <CollectionView Grid.Column="1" ItemsSource="{Binding SavedFormats}" WidthRequest="250"
+                            IsVisible="{Binding SavedFormats.Count}">
+                <CollectionView.Header>
+                    <Label Text="Saved Formats" FontAttributes="Bold" Margin="5" />
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:SavedFormatItem">
+                        <Grid Padding="5,2" ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding DisplayText}" VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FormatterViewModel}}, Path=InsertFormatCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Button Grid.Column="1" Text="✕" WidthRequest="35" HeightRequest="30"
+                                    Padding="0" FontSize="12"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FormatterViewModel}}, Path=DeleteFormatCommand}"
+                                    CommandParameter="{Binding .}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <!-- Options Row -->
+        <FlexLayout Grid.Row="4" Wrap="Wrap" AlignItems="Center" JustifyContent="Start">
+            <HorizontalStackLayout Margin="0,0,15,0">
+                <CheckBox IsChecked="{Binding TrimInputValues}" />
+                <Label Text="Trim Input" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,0,15,0">
+                <CheckBox IsChecked="{Binding ExcludeEmptyLines}" />
+                <Label Text="Exclude Empty Lines" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,0,15,0">
+                <CheckBox IsChecked="{Binding RemoveCarriageReturns}" />
+                <Label Text="Remove CR from Output" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,0,15,0">
+                <CheckBox IsChecked="{Binding ExcludeMissingValues}" />
+                <Label Text="Exclude Missing Values" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,0,15,0">
+                <CheckBox IsChecked="{Binding FillWithDefaultText}" />
+                <Label Text="Fill Default:" VerticalOptions="Center" />
+                <Entry Text="{Binding DefaultFillText}" WidthRequest="80" Margin="5,0,0,0" />
+            </HorizontalStackLayout>
+
+            <Button Text="Process" Command="{Binding ProcessCommand}" Margin="10,0"
+                    BackgroundColor="{StaticResource Primary}" TextColor="White" />
+            <Button Text="Expand" Command="{Binding ExpandCommand}" Margin="5,0" />
+            <Button Text="Cancel" Command="{Binding CancelProcessingCommand}"
+                    IsEnabled="{Binding IsProcessing}" Margin="5,0" />
+        </FlexLayout>
+
+        <!-- Bottom Section: Results -->
+        <Label Grid.Row="5" Text="Results" FontAttributes="Bold" Margin="0,5,0,0"
+               IsVisible="{Binding ResultsText.Length}" />
+
+        <Editor Grid.Row="5" Text="{Binding ResultsText}" IsReadOnly="True"
+                AutoSize="Disabled" FontFamily="Consolas" Margin="0,25,0,0">
+            <FlyoutBase.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem Text="Copy to Clipboard" Command="{Binding CopyResultsCommand}" />
+                    <MenuFlyoutItem Text="Save to File" Command="{Binding SaveResultsToFileCommand}" />
+                </MenuFlyout>
+            </FlyoutBase.ContextFlyout>
+        </Editor>
+
+        <!-- Status Bar -->
+        <Grid Grid.Row="6" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,*" Padding="5,5,5,0" ColumnSpacing="15">
+            <Label Text="{Binding StatusText}" VerticalOptions="Center" />
+            <Label Grid.Column="1" VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Submitted: " />
+                        <Span Text="{Binding LinesSubmitted}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Grid.Column="2" VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Processed: " />
+                        <Span Text="{Binding LinesProcessed}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Grid.Column="3" VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Empty: " />
+                        <Span Text="{Binding EmptyLinesExcluded}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Grid.Column="4" VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Missing: " />
+                        <Span Text="{Binding MissingValuesExcluded}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <ProgressBar Grid.Column="5" Progress="{Binding ProgressValue}" VerticalOptions="Center" />
+        </Grid>
+    </Grid>
+</ContentPage>

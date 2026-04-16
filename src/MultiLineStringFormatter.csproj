@@ -11,4 +11,15 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="MultiLineStringFormatter.Core\**" />
+    <Compile Remove="MultiLineStringFormatter.Maui\**" />
+    <Content Remove="MultiLineStringFormatter.Core\**" />
+    <Content Remove="MultiLineStringFormatter.Maui\**" />
+    <EmbeddedResource Remove="MultiLineStringFormatter.Core\**" />
+    <EmbeddedResource Remove="MultiLineStringFormatter.Maui\**" />
+    <None Remove="MultiLineStringFormatter.Core\**" />
+    <None Remove="MultiLineStringFormatter.Maui\**" />
+  </ItemGroup>
 </Project>

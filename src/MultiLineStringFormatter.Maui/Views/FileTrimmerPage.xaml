@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MultiLineStringFormatter.Maui.ViewModels"
+             x:Class="MultiLineStringFormatter.Maui.Views.FileTrimmerPage"
+             Title="File Trim Utility">
+
+    <ContentPage.BindingContext>
+        <vm:FileTrimmerViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,*" Padding="20" RowSpacing="10">
+
+        <!-- Input File -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto">
+            <Label Text="Input File:" VerticalOptions="Center" FontAttributes="Bold" WidthRequest="100" />
+            <Entry Grid.Column="1" Text="{Binding InputFilePath}" IsReadOnly="True" />
+            <Button Grid.Column="2" Text="Browse..." Command="{Binding SelectInputFileCommand}" Margin="5,0,0,0" />
+        </Grid>
+
+        <!-- Output File -->
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto">
+            <Label Text="Output File:" VerticalOptions="Center" FontAttributes="Bold" WidthRequest="100" />
+            <Entry Grid.Column="1" Text="{Binding OutputFilePath}" IsReadOnly="True" />
+            <Button Grid.Column="2" Text="Browse..." Command="{Binding SelectOutputFileCommand}" Margin="5,0,0,0" />
+        </Grid>
+
+        <!-- Delimiter -->
+        <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto">
+            <Label Text="Delimiter:" VerticalOptions="Center" FontAttributes="Bold" WidthRequest="100" />
+            <Picker Grid.Column="1" ItemsSource="{Binding Delimiters}" SelectedItem="{Binding SelectedDelimiter}"
+                    WidthRequest="150" />
+        </Grid>
+
+        <!-- Indexes -->
+        <Grid Grid.Row="3" ColumnDefinitions="Auto,*">
+            <Label Text="Indexes:" VerticalOptions="Center" FontAttributes="Bold" WidthRequest="100" />
+            <Entry Grid.Column="1" Text="{Binding Indexes}"
+                   Placeholder="Comma-separated column indexes (e.g. 0,1,3)" />
+        </Grid>
+
+        <!-- Keep Blank -->
+        <HorizontalStackLayout Grid.Row="4">
+            <CheckBox IsChecked="{Binding KeepBlankLines}" />
+            <Label Text="Keep blank lines" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <!-- Buttons -->
+        <HorizontalStackLayout Grid.Row="5" Spacing="10">
+            <Button Text="Process" Command="{Binding ProcessCommand}"
+                    BackgroundColor="{StaticResource Primary}" TextColor="White" />
+            <Button Text="Open Output" Command="{Binding OpenOutputFileCommand}"
+                    IsEnabled="{Binding CanOpenOutput}" />
+            <Button Text="Back" Command="{Binding GoBackCommand}" />
+        </HorizontalStackLayout>
+
+        <!-- Progress -->
+        <ProgressBar Grid.Row="6" Progress="{Binding ProgressValue}" IsVisible="{Binding IsProcessing}" />
+
+        <!-- Status -->
+        <Label Grid.Row="7" Text="{Binding StatusText}" VerticalOptions="Start" />
+    </Grid>
+</ContentPage>
