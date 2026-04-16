@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLineStringFormatter.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLineStringFormatter.Maui", "MultiLineStringFormatter.Maui\MultiLineStringFormatter.Maui.csproj", "{AF3D112B-2698-4187-89DC-47E895D2B414}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLineStringFormatter.Tests", "MultiLineStringFormatter.Tests\MultiLineStringFormatter.Tests.csproj", "{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,18 @@ Global
 		{AF3D112B-2698-4187-89DC-47E895D2B414}.Release|x86.Build.0 = Release|Any CPU
 		{AF3D112B-2698-4187-89DC-47E895D2B414}.Release|x64.ActiveCfg = Release|Any CPU
 		{AF3D112B-2698-4187-89DC-47E895D2B414}.Release|x64.Build.0 = Release|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Debug|x86.Build.0 = Debug|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Debug|x64.Build.0 = Debug|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Release|x86.ActiveCfg = Release|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Release|x86.Build.0 = Release|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Release|x64.ActiveCfg = Release|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,6 +9,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<NoWarn>MVVMTK0045</NoWarn>
 
 		<MauiXamlInflator>SourceGen</MauiXamlInflator>
 
