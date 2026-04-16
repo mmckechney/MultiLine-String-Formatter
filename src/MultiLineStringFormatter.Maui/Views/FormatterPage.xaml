@@ -31,9 +31,6 @@
                         WidthRequest="120" />
             </Grid>
             <Button Grid.Column="2" Text="Save Format" Command="{Binding SaveFormatCommand}" Margin="5,0" />
-            <MenuBarItem Grid.Column="3" Text="Options">
-                <MenuFlyoutItem Text="Trim Input Values" />
-            </MenuBarItem>
         </Grid>
 
         <Grid Grid.Row="3" ColumnDefinitions="*,Auto">
@@ -41,8 +38,7 @@
                     Placeholder="Enter format string (e.g. INSERT INTO table VALUES('{0}', '{1}'))"
                     AutoSize="Disabled" FontFamily="Consolas" />
             <!-- Saved Formats List -->
-            <CollectionView Grid.Column="1" ItemsSource="{Binding SavedFormats}" WidthRequest="250"
-                            IsVisible="{Binding SavedFormats.Count}">
+            <CollectionView Grid.Column="1" ItemsSource="{Binding SavedFormats}" WidthRequest="250">
                 <CollectionView.Header>
                     <Label Text="Saved Formats" FontAttributes="Bold" Margin="5" />
                 </CollectionView.Header>
@@ -98,8 +94,7 @@
         </FlexLayout>
 
         <!-- Bottom Section: Results -->
-        <Label Grid.Row="5" Text="Results" FontAttributes="Bold" Margin="0,5,0,0"
-               IsVisible="{Binding ResultsText.Length}" />
+        <Label Grid.Row="5" Text="Results" FontAttributes="Bold" Margin="0,5,0,0" />
 
         <Editor Grid.Row="5" Text="{Binding ResultsText}" IsReadOnly="True"
                 AutoSize="Disabled" FontFamily="Consolas" Margin="0,25,0,0">

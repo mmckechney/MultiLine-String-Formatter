@@ -50,7 +50,7 @@
         <!-- Data Grid -->
         <CollectionView Grid.Row="2" ItemsSource="{Binding FilteredLines}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="vm:AnalysisViewModel">
+                <DataTemplate>
                     <Grid ColumnDefinitions="80,80,*" Padding="5,2">
                         <Label Text="{Binding LineNumber}" />
                         <Label Grid.Column="1" Text="{Binding ActualIndexCount}" />

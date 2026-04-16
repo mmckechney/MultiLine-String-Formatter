@@ -11,8 +11,6 @@
 		<Nullable>enable</Nullable>
 		<NoWarn>MVVMTK0045</NoWarn>
 
-		<MauiXamlInflator>SourceGen</MauiXamlInflator>
-
 		<!-- Display name -->
 		<ApplicationTitle>Multi-Line String Formatter</ApplicationTitle>
 
