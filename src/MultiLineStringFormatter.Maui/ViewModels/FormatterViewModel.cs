@@ -73,6 +73,12 @@ public partial class FormatterViewModel : ObservableObject
     [ObservableProperty]
     private List<SavedFormatItem> _savedFormats = new();
 
+    [ObservableProperty]
+    private int _sourceCursorPosition;
+
+    [ObservableProperty]
+    private string _indexInfoText = string.Empty;
+
     public List<string> Delimiters { get; } = new()
     {
         "Tab", "Comma", "Pipe", "Tilde", "Space"
@@ -90,6 +96,52 @@ public partial class FormatterViewModel : ObservableObject
     {
         if (!string.IsNullOrEmpty(value))
             DelimiterText = value;
+    }
+
+    partial void OnSourceCursorPositionChanged(int value)
+    {
+        UpdateIndexInfo(value);
+    }
+
+    private void UpdateIndexInfo(int cursorPosition)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(SourceText) || cursorPosition < 0 || cursorPosition > SourceText.Length)
+            {
+                IndexInfoText = string.Empty;
+                return;
+            }
+
+            // Find which line the cursor is on
+            int lineStart = SourceText.LastIndexOf('\n', Math.Max(0, cursorPosition - 1)) + 1;
+            int lineEnd = SourceText.IndexOf('\n', cursorPosition);
+            if (lineEnd < 0) lineEnd = SourceText.Length;
+
+            string line = SourceText[lineStart..lineEnd].TrimEnd('\r');
+            int positionInLine = cursorPosition - lineStart;
+
+            char[] delimiter = Utility.GetDelimiter(DelimiterText);
+            string[] parts = line.Split(delimiter);
+
+            int cumulative = 0;
+            for (int i = 0; i < parts.Length; i++)
+            {
+                cumulative += parts[i].Length;
+                if (cumulative >= positionInLine)
+                {
+                    IndexInfoText = $"Index: {i}  [{parts[i].Trim()}]";
+                    return;
+                }
+                cumulative += 1; // delimiter character
+            }
+
+            IndexInfoText = string.Empty;
+        }
+        catch
+        {
+            IndexInfoText = string.Empty;
+        }
     }
 
     [RelayCommand]

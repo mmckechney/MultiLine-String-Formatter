@@ -20,6 +20,7 @@
         </Grid>
 
         <Editor Grid.Row="1" Text="{Binding SourceText}" Placeholder="Paste your delimited text here..."
+                CursorPosition="{Binding SourceCursorPosition, Mode=TwoWay}"
                 AutoSize="Disabled" FontFamily="Consolas" />
 
         <!-- Middle Section: Format Definition -->
@@ -108,9 +109,11 @@
         </Editor>
 
         <!-- Status Bar -->
-        <Grid Grid.Row="6" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,*" Padding="5,5,5,0" ColumnSpacing="15">
+        <Grid Grid.Row="6" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*" Padding="5,5,5,0" ColumnSpacing="15">
             <Label Text="{Binding StatusText}" VerticalOptions="Center" />
-            <Label Grid.Column="1" VerticalOptions="Center">
+            <Label Grid.Column="1" VerticalOptions="Center" TextColor="{AppThemeBinding Light=#0066CC, Dark=#66B2FF}"
+                   FontAttributes="Bold" Text="{Binding IndexInfoText}" />
+            <Label Grid.Column="2" VerticalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Submitted: " />
@@ -118,7 +121,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label Grid.Column="2" VerticalOptions="Center">
+            <Label Grid.Column="3" VerticalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Processed: " />
@@ -126,7 +129,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label Grid.Column="3" VerticalOptions="Center">
+            <Label Grid.Column="4" VerticalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Empty: " />
@@ -134,7 +137,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label Grid.Column="4" VerticalOptions="Center">
+            <Label Grid.Column="5" VerticalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Missing: " />
@@ -142,7 +145,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <ProgressBar Grid.Column="5" Progress="{Binding ProgressValue}" VerticalOptions="Center" />
+            <ProgressBar Grid.Column="6" Progress="{Binding ProgressValue}" VerticalOptions="Center" />
         </Grid>
     </Grid>
 </ContentPage>
