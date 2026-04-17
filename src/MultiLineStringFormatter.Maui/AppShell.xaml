@@ -4,10 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:MultiLineStringFormatter.Maui.Views"
-    Title="Multi-Line String Formatter">
+    Title="Multi-Line String Formatter"
+    FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
 
     <ShellContent
-        Title="Formatter"
         ContentTemplate="{DataTemplate views:FormatterPage}"
         Route="FormatterPage" />
 
