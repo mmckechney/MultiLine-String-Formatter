@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MultiLineStringFormatter.Maui.ViewModels"
              x:Class="MultiLineStringFormatter.Maui.Views.FileTrimmerPage"
+             x:DataType="vm:FileTrimmerViewModel"
              Title="File Trim Utility">
 
     <ContentPage.BindingContext>

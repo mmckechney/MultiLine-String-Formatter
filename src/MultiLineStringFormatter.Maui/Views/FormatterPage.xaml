@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MultiLineStringFormatter.Maui.ViewModels"
              x:Class="MultiLineStringFormatter.Maui.Views.FormatterPage"
+             x:DataType="vm:FormatterViewModel"
              Title="Multi-Line String Formatter"
              Padding="0">
 
@@ -123,7 +124,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Submitted: " FontSize="11" />
-                        <Span Text="{Binding LinesSubmitted}" FontSize="11" />
+                        <Span Text="{Binding LinesSubmitted}" FontSize="11" x:DataType="vm:FormatterViewModel" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -131,7 +132,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Processed: " FontSize="11" />
-                        <Span Text="{Binding LinesProcessed}" FontSize="11" />
+                        <Span Text="{Binding LinesProcessed}" FontSize="11" x:DataType="vm:FormatterViewModel" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -139,7 +140,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Empty: " FontSize="11" />
-                        <Span Text="{Binding EmptyLinesExcluded}" FontSize="11" />
+                        <Span Text="{Binding EmptyLinesExcluded}" FontSize="11" x:DataType="vm:FormatterViewModel" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -147,7 +148,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Missing: " FontSize="11" />
-                        <Span Text="{Binding MissingValuesExcluded}" FontSize="11" />
+                        <Span Text="{Binding MissingValuesExcluded}" FontSize="11" x:DataType="vm:FormatterViewModel" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>

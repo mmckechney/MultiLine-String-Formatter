@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MultiLineStringFormatter.Maui.ViewModels"
+             xmlns:models="clr-namespace:MultiLineStringFormatter.Core.Models;assembly=MultiLineStringFormatter.Core"
              x:Class="MultiLineStringFormatter.Maui.Views.AnalysisPage"
+             x:DataType="vm:AnalysisViewModel"
              Title="Data Analysis">
 
     <ContentPage.BindingContext>
@@ -50,7 +52,7 @@
         <!-- Data Grid -->
         <CollectionView Grid.Row="2" ItemsSource="{Binding FilteredLines}">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:LineInfo">
                     <Grid ColumnDefinitions="80,80,*" Padding="5,2">
                         <Label Text="{Binding LineNumber}" />
                         <Label Grid.Column="1" Text="{Binding ActualIndexCount}" />
