@@ -35,7 +35,7 @@
             <Entry Text="{Binding DelimiterText}" WidthRequest="90" HeightRequest="26"
                    FontSize="12" VerticalOptions="Center" />
             <Picker ItemsSource="{Binding Delimiters}" SelectedItem="{Binding SelectedDelimiter}"
-                    WidthRequest="100" HeightRequest="26" FontSize="12" VerticalOptions="Center" />
+                    WidthRequest="100" FontSize="12" VerticalOptions="Center" />
             <Button Text="Save Format" Command="{Binding SaveFormatCommand}" />
         </HorizontalStackLayout>
 
