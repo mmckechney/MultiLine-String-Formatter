@@ -28,9 +28,11 @@
         <!-- Delimiter -->
         <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto">
             <Label Text="Delimiter:" VerticalOptions="Center" FontAttributes="Bold" WidthRequest="100" />
-            <Entry Grid.Column="1" Text="{Binding DelimiterText}" WidthRequest="120" />
+            <Entry Grid.Column="1" Text="{Binding DelimiterText}" WidthRequest="120"
+                   HeightRequest="26" FontSize="12" VerticalOptions="Center" />
             <Picker Grid.Column="2" ItemsSource="{Binding Delimiters}" SelectedItem="{Binding SelectedDelimiter}"
-                    WidthRequest="150" Title="Presets" Margin="5,0,0,0" />
+                    WidthRequest="150" HeightRequest="26" FontSize="12" Title="Presets" Margin="5,0,0,0"
+                    VerticalOptions="Center" />
         </Grid>
 
         <!-- Indexes -->
