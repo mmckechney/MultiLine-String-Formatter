@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MultiLineStringFormatter.Maui.ViewModels"
+             xmlns:models="clr-namespace:MultiLineStringFormatter.Core.Models;assembly=MultiLineStringFormatter.Core"
+             x:Class="MultiLineStringFormatter.Maui.Views.AnalysisPage"
+             x:DataType="vm:AnalysisViewModel"
+             Title="Data Analysis">
+
+    <ContentPage.BindingContext>
+        <vm:AnalysisViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="10" RowSpacing="10">
+
+        <!-- Summary -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnSpacing="20">
+            <HorizontalStackLayout>
+                <Label Text="Delimiter: " FontAttributes="Bold" />
+                <Label Text="{Binding Delimiter}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Column="1">
+                <Label Text="Total Lines: " FontAttributes="Bold" />
+                <Label Text="{Binding TotalLines}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Column="2">
+                <Label Text="Index Count: " FontAttributes="Bold" />
+                <Picker ItemsSource="{Binding IndexOptions}" SelectedItem="{Binding SelectedIndex}"
+                        WidthRequest="80" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Column="3">
+                <Label Text="Matching: " FontAttributes="Bold" />
+                <Label Text="{Binding MatchingLines}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Column="4">
+                <Label Text="Less: " FontAttributes="Bold" />
+                <Label Text="{Binding LessIndexes}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Column="5">
+                <Label Text="More: " FontAttributes="Bold" />
+                <Label Text="{Binding MoreIndexes}" />
+            </HorizontalStackLayout>
+        </Grid>
+
+        <!-- Column Headers -->
+        <Grid Grid.Row="1" ColumnDefinitions="80,80,*" BackgroundColor="{AppThemeBinding Light=#E0E0E0, Dark=#404040}" Padding="5">
+            <Label Text="Line #" FontAttributes="Bold" />
+            <Label Grid.Column="1" Text="Indexes" FontAttributes="Bold" />
+            <Label Grid.Column="2" Text="Line Text" FontAttributes="Bold" />
+        </Grid>
+
+        <!-- Data Grid -->
+        <CollectionView Grid.Row="2" ItemsSource="{Binding FilteredLines}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:LineInfo">
+                    <Grid ColumnDefinitions="80,80,*" Padding="5,2">
+                        <Label Text="{Binding LineNumber}" />
+                        <Label Grid.Column="1" Text="{Binding ActualIndexCount}" />
+                        <Label Grid.Column="2" Text="{Binding LineText}" LineBreakMode="TailTruncation" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Bottom -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,Auto">
+            <Label Text="{Binding StatusText}" VerticalOptions="Center" />
+            <Button Grid.Column="1" Text="Back" Command="{Binding GoBackCommand}" />
+        </Grid>
+    </Grid>
+</ContentPage>

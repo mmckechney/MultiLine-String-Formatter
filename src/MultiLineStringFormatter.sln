@@ -3,29 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLineStringFormatter", "MultiLineStringFormatter.csproj", "{3BA4AA38-978E-4547-8981-9064E86ECA0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLineStringFormatter.Core", "MultiLineStringFormatter.Core\MultiLineStringFormatter.Core.csproj", "{2CAD6665-B7BE-4C12-803D-98A842A4FABA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DB83B694-62E5-4508-8516-48B30ACA8CBF}"
-	ProjectSection(SolutionItems) = preProject
-		StringManipulatorCfg.cs = StringManipulatorCfg.cs
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLineStringFormatter.Maui", "MultiLineStringFormatter.Maui\MultiLineStringFormatter.Maui.csproj", "{AF3D112B-2698-4187-89DC-47E895D2B414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLineStringFormatter.Tests", "MultiLineStringFormatter.Tests\MultiLineStringFormatter.Tests.csproj", "{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Debug|x86.ActiveCfg = Debug|x86
-		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Debug|x86.Build.0 = Debug|x86
-		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Release|x86.ActiveCfg = Release|x86
-		{3BA4AA38-978E-4547-8981-9064E86ECA0C}.Release|x86.Build.0 = Release|x86
+		{2CAD6665-B7BE-4C12-803D-98A842A4FABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CAD6665-B7BE-4C12-803D-98A842A4FABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CAD6665-B7BE-4C12-803D-98A842A4FABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CAD6665-B7BE-4C12-803D-98A842A4FABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF3D112B-2698-4187-89DC-47E895D2B414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF3D112B-2698-4187-89DC-47E895D2B414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF3D112B-2698-4187-89DC-47E895D2B414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF3D112B-2698-4187-89DC-47E895D2B414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B28C80-8C1F-4E5E-A62F-1C8AFD751E80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
