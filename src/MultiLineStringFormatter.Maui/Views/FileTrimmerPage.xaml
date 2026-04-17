@@ -26,14 +26,13 @@
         </Grid>
 
         <!-- Delimiter -->
-        <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto">
+        <HorizontalStackLayout Grid.Row="2" Spacing="6">
             <Label Text="Delimiter:" VerticalOptions="Center" FontAttributes="Bold" WidthRequest="100" />
-            <Entry Grid.Column="1" Text="{Binding DelimiterText}" WidthRequest="120"
-                   HeightRequest="26" FontSize="12" VerticalOptions="Center" />
-            <Picker Grid.Column="2" ItemsSource="{Binding Delimiters}" SelectedItem="{Binding SelectedDelimiter}"
-                    WidthRequest="150" FontSize="12" Title="Presets" Margin="5,0,0,0"
-                    VerticalOptions="Center" />
-        </Grid>
+            <Entry Text="{Binding DelimiterText}" WidthRequest="120"
+                   HeightRequest="28" FontSize="12" VerticalOptions="Center" />
+            <Picker ItemsSource="{Binding Delimiters}" SelectedItem="{Binding SelectedDelimiter}"
+                    WidthRequest="150" FontSize="12" VerticalOptions="Center" />
+        </HorizontalStackLayout>
 
         <!-- Indexes -->
         <Grid Grid.Row="3" ColumnDefinitions="Auto,*">
