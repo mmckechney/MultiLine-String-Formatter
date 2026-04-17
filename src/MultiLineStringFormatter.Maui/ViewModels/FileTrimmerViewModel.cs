@@ -23,6 +23,9 @@ public partial class FileTrimmerViewModel : ObservableObject
     private string _selectedDelimiter = "Tab";
 
     [ObservableProperty]
+    private string _delimiterText = "Tab";
+
+    [ObservableProperty]
     private bool _keepBlankLines;
 
     [ObservableProperty]
@@ -41,6 +44,12 @@ public partial class FileTrimmerViewModel : ObservableObject
     {
         "Tab", "Comma", "Pipe", "Tilde", "Space"
     };
+
+    partial void OnSelectedDelimiterChanged(string value)
+    {
+        if (!string.IsNullOrEmpty(value))
+            DelimiterText = value;
+    }
 
     [RelayCommand]
     private async Task SelectInputFileAsync()
@@ -87,7 +96,7 @@ public partial class FileTrimmerViewModel : ObservableObject
         ProgressValue = 0;
         StatusText = "Processing...";
 
-        char[] delimiter = Utility.GetDelimiter(SelectedDelimiter);
+        char[] delimiter = Utility.GetDelimiter(DelimiterText);
         var tData = new TrimmerData(InputFilePath, OutputFilePath, indexes, delimiter, KeepBlankLines);
 
         var progress = new Progress<int>(_ =>

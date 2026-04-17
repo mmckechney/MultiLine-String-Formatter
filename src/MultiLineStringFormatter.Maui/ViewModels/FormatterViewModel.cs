@@ -29,6 +29,9 @@ public partial class FormatterViewModel : ObservableObject
     private string _selectedDelimiter = "Tab";
 
     [ObservableProperty]
+    private string _delimiterText = "Tab";
+
+    [ObservableProperty]
     private string _statusText = "Ready";
 
     [ObservableProperty]
@@ -83,6 +86,12 @@ public partial class FormatterViewModel : ObservableObject
         LoadSavedFormats();
     }
 
+    partial void OnSelectedDelimiterChanged(string value)
+    {
+        if (!string.IsNullOrEmpty(value))
+            DelimiterText = value;
+    }
+
     [RelayCommand]
     private async Task ProcessAsync()
     {
@@ -103,7 +112,7 @@ public partial class FormatterViewModel : ObservableObject
         LinesSubmitted = lines.Length;
 
         var data = new StringData(
-            FormatText, lines, SelectedDelimiter,
+            FormatText, lines, DelimiterText,
             RemoveCarriageReturns, ExcludeEmptyLines,
             ExcludeMissingValues, TrimInputValues,
             FillWithDefaultText ? DefaultFillText : "");
@@ -153,7 +162,7 @@ public partial class FormatterViewModel : ObservableObject
         StatusText = "Expanding...";
 
         var lines = SourceText.Split('\n').Select(l => l.TrimEnd('\r')).ToArray();
-        var data = new ExpandData(FormatText, lines, SelectedDelimiter);
+        var data = new ExpandData(FormatText, lines, DelimiterText);
 
         try
         {
@@ -228,7 +237,7 @@ public partial class FormatterViewModel : ObservableObject
         {
             Name = name,
             Value = FormatText,
-            Delimiter = SelectedDelimiter
+            Delimiter = DelimiterText
         };
 
         _formats ??= new StringManipulatorCfg();
@@ -241,7 +250,10 @@ public partial class FormatterViewModel : ObservableObject
     private void InsertFormat(SavedFormatItem item)
     {
         FormatText = item.Value;
-        SelectedDelimiter = item.Delimiter;
+        DelimiterText = item.Delimiter;
+        // Also update the picker if it matches a preset
+        if (Delimiters.Contains(item.Delimiter))
+            SelectedDelimiter = item.Delimiter;
     }
 
     [RelayCommand]
@@ -267,7 +279,7 @@ public partial class FormatterViewModel : ObservableObject
         {
             SourceLines = lines,
             TotalLines = lines.Length,
-            Delimiter = SelectedDelimiter
+            Delimiter = DelimiterText
         };
 
         await Shell.Current.GoToAsync(nameof(Views.AnalysisPage),
