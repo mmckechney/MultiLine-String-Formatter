@@ -26,7 +26,8 @@
                 StrokeShape="RoundRectangle 3" Padding="1">
             <Editor Text="{Binding SourceText}" Placeholder="Paste your delimited text here..."
                     CursorPosition="{Binding SourceCursorPosition, Mode=TwoWay}"
-                    AutoSize="Disabled" FontFamily="Consolas" FontSize="12" />
+                    AutoSize="Disabled" FontFamily="Consolas" FontSize="12"
+                    VerticalOptions="Fill" HorizontalOptions="Fill" />
         </Border>
 
         <!-- Row 2: Format header -->
@@ -46,7 +47,8 @@
                     StrokeShape="RoundRectangle 3" Padding="1">
                 <Editor Text="{Binding FormatText}"
                         Placeholder="Format string (e.g. INSERT INTO table VALUES('{0}', '{1}'))"
-                        AutoSize="Disabled" FontFamily="Consolas" FontSize="12" />
+                        AutoSize="Disabled" FontFamily="Consolas" FontSize="12"
+                        VerticalOptions="Fill" HorizontalOptions="Fill" />
             </Border>
             <Border Grid.Column="1" Stroke="{AppThemeBinding Light=#CCCCCC, Dark=#555555}" StrokeThickness="1"
                     StrokeShape="RoundRectangle 3" Padding="1">
@@ -103,7 +105,8 @@
         <Border Grid.Row="5" Stroke="{AppThemeBinding Light=#CCCCCC, Dark=#555555}" StrokeThickness="1"
                 StrokeShape="RoundRectangle 3" Padding="1">
             <Editor Text="{Binding ResultsText}" IsReadOnly="True"
-                    AutoSize="Disabled" FontFamily="Consolas" FontSize="12">
+                    AutoSize="Disabled" FontFamily="Consolas" FontSize="12"
+                    VerticalOptions="Fill" HorizontalOptions="Fill">
                 <FlyoutBase.ContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Text="Copy to Clipboard" Command="{Binding CopyResultsCommand}" />
