@@ -1,9 +1,10 @@
-name: .NET Core
+name: .NET Build
 
 on:
   push:
     branches: 
     - master
+    - maui
   pull_request:
     branches:
     - master
@@ -14,19 +15,31 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 7.x
-    - name: Install dependencies
-      run:  dotnet restore src/MultiLineStringFormatter.sln
+        dotnet-version: 10.x
+
+    - name: Install MAUI workload
+      run: dotnet workload install maui-windows
+
+    - name: Restore dependencies
+      run: dotnet restore src/MultiLineStringFormatter.sln -r win-x64
+
     - name: Build
       run: dotnet build src/MultiLineStringFormatter.sln --configuration Release --no-restore
 
+    - name: Run tests
+      run: dotnet test src/MultiLineStringFormatter.Tests --configuration Release --no-build
 
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
+    - name: Publish self-contained
+      run: .\publish.ps1 -OutputDir .\publish
+      shell: pwsh
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
       with:
         name: MultiLineStringFormatter
-        path: src/bin/Release/net7.0-windows
+        path: publish/

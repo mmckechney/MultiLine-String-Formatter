@@ -39,7 +39,7 @@ Write-Host "  Output: $OutputDir" -ForegroundColor Yellow
 dotnet @publishArgs
 
 if ($LASTEXITCODE -eq 0) {
-    $exe = Get-ChildItem "$OutputDir\MultiLineStringFormatter.Maui.exe" -ErrorAction SilentlyContinue
+    $exe = Get-ChildItem "$OutputDir\MultiLineStringFormatter.exe" -ErrorAction SilentlyContinue
     if ($exe) {
         Write-Host "`nPublish succeeded!" -ForegroundColor Green
         Write-Host "  Executable: $($exe.FullName)" -ForegroundColor Green
