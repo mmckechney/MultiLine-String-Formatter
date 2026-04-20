@@ -1,4 +1,4 @@
-![.NET Build](https://github.com/mmckechney/MultiLine-String-Formatter/workflows/.NET%20Build/badge.svg?branch=master)
+[![.NET Build](https://github.com/mmckechney/MultiLine-String-Formatter/actions/workflows/dotnet-core.yml/badge.svg)](https://github.com/mmckechney/MultiLine-String-Formatter/actions/workflows/dotnet-core.yml)
 
 # Introduction
 
