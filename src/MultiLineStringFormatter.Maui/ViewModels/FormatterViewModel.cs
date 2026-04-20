@@ -8,6 +8,8 @@ namespace MultiLineStringFormatter.Maui.ViewModels;
 
 public partial class FormatterViewModel : ObservableObject
 {
+    private static readonly string[] LineBreakSeparators = ["\r\n", "\r", "\n"];
+
     private readonly StringFormatterService _formatterService = new();
     private readonly StringExpandService _expandService = new();
     private readonly FormatConfigService _configService = new();
@@ -113,12 +115,34 @@ public partial class FormatterViewModel : ObservableObject
                 return;
             }
 
-            // Find which line the cursor is on
-            int lineStart = SourceText.LastIndexOf('\n', Math.Max(0, cursorPosition - 1)) + 1;
-            int lineEnd = SourceText.IndexOf('\n', cursorPosition);
-            if (lineEnd < 0) lineEnd = SourceText.Length;
+            // Find which line the cursor is on.
+            // WinUI3 uses \r, other platforms may use \n or \r\n.
+            int searchFrom = Math.Max(0, cursorPosition - 1);
+            int lineStart = -1;
+            for (int i = searchFrom; i >= 0; i--)
+            {
+                char c = SourceText[i];
+                if (c == '\n' || c == '\r')
+                {
+                    // If this is \r\n, the line starts after \n
+                    lineStart = i + 1;
+                    break;
+                }
+            }
+            if (lineStart < 0) lineStart = 0;
 
-            string line = SourceText[lineStart..lineEnd].TrimEnd('\r');
+            int lineEnd = SourceText.Length;
+            for (int i = cursorPosition; i < SourceText.Length; i++)
+            {
+                char c = SourceText[i];
+                if (c == '\n' || c == '\r')
+                {
+                    lineEnd = i;
+                    break;
+                }
+            }
+
+            string line = SourceText[lineStart..lineEnd];
             int positionInLine = cursorPosition - lineStart;
 
             char[] delimiter = Utility.GetDelimiter(DelimiterText);
@@ -160,7 +184,7 @@ public partial class FormatterViewModel : ObservableObject
 
         _cts = new CancellationTokenSource();
 
-        var lines = SourceText.Split('\n').Select(l => l.TrimEnd('\r')).ToArray();
+        var lines = SourceText.Split(LineBreakSeparators, StringSplitOptions.None);
         LinesSubmitted = lines.Length;
 
         var data = new StringData(
@@ -213,7 +237,7 @@ public partial class FormatterViewModel : ObservableObject
         IsProcessing = true;
         StatusText = "Expanding...";
 
-        var lines = SourceText.Split('\n').Select(l => l.TrimEnd('\r')).ToArray();
+        var lines = SourceText.Split(LineBreakSeparators, StringSplitOptions.None);
         var data = new ExpandData(FormatText, lines, DelimiterText);
 
         try
@@ -326,8 +350,7 @@ public partial class FormatterViewModel : ObservableObject
     [RelayCommand]
     private async Task OpenAnalysisAsync()
     {
-        var lines = SourceText.Split('\n').Select(l => l.TrimEnd('\r')).ToArray();
-        var data = new AnalysisData
+        var lines = SourceText.Split(LineBreakSeparators, StringSplitOptions.None);        var data = new AnalysisData
         {
             SourceLines = lines,
             TotalLines = lines.Length,
