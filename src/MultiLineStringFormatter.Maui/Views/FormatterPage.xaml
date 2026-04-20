@@ -22,8 +22,8 @@
         </HorizontalStackLayout>
 
         <!-- Row 1: Source editor -->
-        <Border Grid.Row="1" Stroke="{AppThemeBinding Light=#CCCCCC, Dark=#555555}" StrokeThickness="1"
-                StrokeShape="RoundRectangle 3" Padding="1">
+        <Border x:Name="SourceBorder" Grid.Row="1" Stroke="{AppThemeBinding Light=#CCCCCC, Dark=#555555}" StrokeThickness="1"
+                StrokeShape="RoundRectangle 3" Padding="1" SizeChanged="OnEditorBorderSizeChanged">
             <Editor x:Name="SourceEditor" Text="{Binding SourceText}" Placeholder="Paste your delimited text here..."
                     CursorPosition="{Binding SourceCursorPosition, Mode=TwoWay}"
                     AutoSize="Disabled" FontFamily="Consolas" FontSize="12"
@@ -102,8 +102,8 @@
         </HorizontalStackLayout>
 
         <!-- Row 5: Results editor -->
-        <Border Grid.Row="5" Stroke="{AppThemeBinding Light=#CCCCCC, Dark=#555555}" StrokeThickness="1"
-                StrokeShape="RoundRectangle 3" Padding="1">
+        <Border x:Name="ResultsBorder" Grid.Row="5" Stroke="{AppThemeBinding Light=#CCCCCC, Dark=#555555}" StrokeThickness="1"
+                StrokeShape="RoundRectangle 3" Padding="1" SizeChanged="OnEditorBorderSizeChanged">
             <Editor x:Name="ResultsEditor" Text="{Binding ResultsText}" IsReadOnly="True"
                     AutoSize="Disabled" FontFamily="Consolas" FontSize="12"
                     VerticalOptions="Fill" HorizontalOptions="Fill">
