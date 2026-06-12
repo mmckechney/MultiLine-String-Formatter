@@ -73,6 +73,9 @@ public partial class FormatterViewModel : ObservableObject
     private string _defaultFillText = "NULL";
 
     [ObservableProperty]
+    private bool _excludeSeparatorLines = true;
+
+    [ObservableProperty]
     private List<SavedFormatItem> _savedFormats = new();
 
     [ObservableProperty]
@@ -191,7 +194,8 @@ public partial class FormatterViewModel : ObservableObject
             FormatText, lines, DelimiterText,
             RemoveCarriageReturns, ExcludeEmptyLines,
             ExcludeMissingValues, TrimInputValues,
-            FillWithDefaultText ? DefaultFillText : "");
+            FillWithDefaultText ? DefaultFillText : "",
+            ExcludeSeparatorLines);
 
         var progress = new Progress<BulkLinePurge>(purge =>
         {

@@ -92,6 +92,8 @@
             <Label Text="Fill:" VerticalOptions="Center" FontSize="11" />
             <Entry Text="{Binding DefaultFillText}" WidthRequest="55" HeightRequest="22"
                    FontSize="11" VerticalOptions="Center" Margin="2,0,10,0" />
+            <CheckBox IsChecked="{Binding ExcludeSeparatorLines}" VerticalOptions="Center" />
+            <Label Text="Excl ─ Lines" VerticalOptions="Center" FontSize="11" Margin="0,0,6,0" />
             <Button Text="Process" Command="{Binding ProcessCommand}" FontAttributes="Bold"
                     BackgroundColor="{StaticResource Primary}" TextColor="White" />
             <Button Text="Expand" Command="{Binding ExpandCommand}" />

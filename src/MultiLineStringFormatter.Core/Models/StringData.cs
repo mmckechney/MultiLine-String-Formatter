@@ -11,9 +11,12 @@ public class StringData
     public readonly bool TrimInputValues;
     public readonly string DefaultFillText;
 
+    public readonly bool ExcludeSeparatorLines;
+
     public StringData(string format, string[] lines, string delimiter,
         bool removeCarriageReturns, bool excludeEmptyLines,
-        bool excludeMissingValues, bool trimInputValues, string defaultFillText)
+        bool excludeMissingValues, bool trimInputValues, string defaultFillText,
+        bool excludeSeparatorLines = false)
     {
         Format = format;
         Lines = lines;
@@ -23,5 +26,6 @@ public class StringData
         ExcludeMissingValues = excludeMissingValues;
         TrimInputValues = trimInputValues;
         DefaultFillText = defaultFillText;
+        ExcludeSeparatorLines = excludeSeparatorLines;
     }
 }

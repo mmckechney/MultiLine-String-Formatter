@@ -108,6 +108,16 @@ public class StringFormatterService
                     vals[j] = vals[j].Trim();
             }
 
+            // Exclude lines where every referenced field is a box-rule (─ U+2500 repeated)
+            if (data.ExcludeSeparatorLines && referencedIndices.Count > 0 &&
+                referencedIndices.All(idx => idx < vals.Length &&
+                    vals[idx].Trim().Length > 0 &&
+                    vals[idx].Trim().All(c => c == '\u2500')))
+            {
+                emptyLinesExcluded++;
+                continue;
+            }
+
             try
             {
                 var tmpLine = data.Format;
