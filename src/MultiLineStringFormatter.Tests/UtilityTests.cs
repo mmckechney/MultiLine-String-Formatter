@@ -11,12 +11,20 @@ public class UtilityTests
     [DataRow("Space", ' ')]
     [DataRow("Comma", ',')]
     [DataRow("Tilde", '~')]
-    [DataRow("Pipe", '|')]
     public void GetDelimiter_NamedDelimiters_ReturnsCorrectChar(string input, char expected)
     {
         var result = Utility.GetDelimiter(input);
         Assert.AreEqual(1, result.Length);
         Assert.AreEqual(expected, result[0]);
+    }
+
+    [TestMethod]
+    public void GetDelimiter_Pipe_ReturnsBothPipeAndBoxDrawing()
+    {
+        var result = Utility.GetDelimiter("Pipe");
+        Assert.AreEqual(2, result.Length);
+        Assert.IsTrue(result.Contains('|'));
+        Assert.IsTrue(result.Contains('\u2502'));
     }
 
     [TestMethod]

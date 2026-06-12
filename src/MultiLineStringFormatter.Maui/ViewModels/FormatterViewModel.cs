@@ -73,6 +73,9 @@ public partial class FormatterViewModel : ObservableObject
     private string _defaultFillText = "NULL";
 
     [ObservableProperty]
+    private bool _excludeSeparatorLines = true;
+
+    [ObservableProperty]
     private List<SavedFormatItem> _savedFormats = new();
 
     [ObservableProperty]
@@ -146,18 +149,18 @@ public partial class FormatterViewModel : ObservableObject
             int positionInLine = cursorPosition - lineStart;
 
             char[] delimiter = Utility.GetDelimiter(DelimiterText);
-            string[] parts = line.Split(delimiter);
+            string[] parts = line.Split(delimiter, StringSplitOptions.None);
 
             int cumulative = 0;
             for (int i = 0; i < parts.Length; i++)
             {
-                cumulative += parts[i].Length;
-                if (cumulative >= positionInLine)
+                int partEnd = cumulative + parts[i].Length;
+                if (positionInLine < partEnd)
                 {
                     IndexInfoText = $"Index: {i}  [{parts[i].Trim()}]";
                     return;
                 }
-                cumulative += 1; // delimiter character
+                cumulative = partEnd + 1; // each delimiter in the string is always 1 character
             }
 
             IndexInfoText = string.Empty;
@@ -191,7 +194,8 @@ public partial class FormatterViewModel : ObservableObject
             FormatText, lines, DelimiterText,
             RemoveCarriageReturns, ExcludeEmptyLines,
             ExcludeMissingValues, TrimInputValues,
-            FillWithDefaultText ? DefaultFillText : "");
+            FillWithDefaultText ? DefaultFillText : "",
+            ExcludeSeparatorLines);
 
         var progress = new Progress<BulkLinePurge>(purge =>
         {
