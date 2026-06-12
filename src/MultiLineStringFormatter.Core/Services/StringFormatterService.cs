@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using MultiLineStringFormatter.Core.Models;
@@ -31,6 +32,7 @@ public class StringFormatterService
         MatchCollection matches = formatCounter.Matches(data.Format);
         int maxMatchFormatNumber = 0;
         int minMatchFormatNumber = int.MaxValue;
+        var referencedIndices = new List<int>();
 
         for (int i = 0; i < matches.Count; i++)
         {
@@ -38,6 +40,7 @@ public class StringFormatterService
             {
                 if (tmp + 1 > maxMatchFormatNumber) maxMatchFormatNumber = tmp + 1;
                 if (tmp < minMatchFormatNumber) minMatchFormatNumber = tmp;
+                if (!referencedIndices.Contains(tmp)) referencedIndices.Add(tmp);
             }
         }
 
@@ -70,9 +73,9 @@ public class StringFormatterService
                 }
                 else
                 {
-                    for (int j = 0; j < maxMatchFormatNumber; j++)
+                    foreach (int idx in referencedIndices)
                     {
-                        if (vals[j].Trim().Length == 0)
+                        if (idx < vals.Length && vals[idx].Trim().Length == 0)
                         {
                             missingValueLinesExcluded++;
                             skip = true;
