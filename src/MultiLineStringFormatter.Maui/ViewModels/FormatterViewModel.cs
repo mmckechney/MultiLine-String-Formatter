@@ -157,7 +157,7 @@ public partial class FormatterViewModel : ObservableObject
                     IndexInfoText = $"Index: {i}  [{parts[i].Trim()}]";
                     return;
                 }
-                cumulative = partEnd + delimiter.Length;
+                cumulative = partEnd + 1; // each delimiter in the string is always 1 character
             }
 
             IndexInfoText = string.Empty;
