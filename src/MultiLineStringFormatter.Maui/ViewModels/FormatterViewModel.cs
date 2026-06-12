@@ -146,18 +146,18 @@ public partial class FormatterViewModel : ObservableObject
             int positionInLine = cursorPosition - lineStart;
 
             char[] delimiter = Utility.GetDelimiter(DelimiterText);
-            string[] parts = line.Split(delimiter);
+            string[] parts = line.Split(delimiter, StringSplitOptions.None);
 
             int cumulative = 0;
             for (int i = 0; i < parts.Length; i++)
             {
-                cumulative += parts[i].Length;
-                if (cumulative >= positionInLine)
+                int partEnd = cumulative + parts[i].Length;
+                if (positionInLine < partEnd)
                 {
                     IndexInfoText = $"Index: {i}  [{parts[i].Trim()}]";
                     return;
                 }
-                cumulative += 1; // delimiter character
+                cumulative = partEnd + delimiter.Length;
             }
 
             IndexInfoText = string.Empty;
