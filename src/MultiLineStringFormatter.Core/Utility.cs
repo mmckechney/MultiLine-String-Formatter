@@ -13,7 +13,7 @@ public static class Utility
             "space" => new[] { ' ' },
             "comma" => new[] { ',' },
             "tilde" => new[] { '~' },
-            "pipe" => new[] { '|' },
+            "pipe" => new[] { '|', '\u2502' }, // also match box-drawing vertical bar │
             _ => delimiterString.ToCharArray(),
         };
     }
